@@ -1,0 +1,92 @@
+﻿@model Employee
+
+@Html.Partial("_LayoutPartial")
+
+@using (Html.BeginForm())
+{
+ @Html.AntiForgeryToken()
+ @Html.ValidationSummary(true)
+
+    <div class="container">
+        <div class="form-horizontal">
+            <!-- Address form -->
+            <h2>Employee</h2>
+
+            <!-- full-name input-->
+            <div class="control-group col-lg-6">
+                <label class="control-label">First Name</label>
+                <div class="controls ">
+                    @Html.EditorFor(model => model.FirstName, new { @class = "input-xlarge col-md-12" })
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <div class="control-group col-lg-6">
+                <label class="control-label">Last Name</label>
+                <div class="controls">
+                    @Html.EditorFor(model => model.LastName, new { @class = "input-xlarge" })
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <!-- address-line1 input-->
+            <div class="control-group col-lg-6">
+                <label class="control-label">Address Line 1</label>
+                <div class="controls">
+                    @Html.EditorFor(model => model.Address, new { @class = "input-xlarge" })
+                    <p class="help-block">Street address, P.O. box, company name, c/o</p>
+                </div>
+            </div>
+            <!-- address-line2 input-->
+            <div class="control-group col-lg-6">
+                <label class="control-label">Address Line 2</label>
+                <div class="controls">
+                    @Html.EditorFor(model => model.Address, new { @class = "input-xlarge" })
+                    <p class="help-block">Apartment, suite , unit, building, floor, etc.</p>
+                </div>
+            </div>
+            <!-- city input-->
+            <div class="control-group col-lg-6">
+                <label class="control-label">City / Town</label>
+                <div class="controls">
+                    @Html.EditorFor(model => model.City, new { @class = "input-xlarge" })
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <!-- phone input-->
+            <div class="control-group col-lg-6">
+                <label class="control-label">Phone</label>
+                <div class="controls">
+                    @Html.EditorFor(model => model.Phone, new { @class = "input-xlarge" })
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <!-- email input-->
+            <div class="control-group col-lg-6">
+                <label class="control-label">Email</label>
+                <div class="controls">
+                    @Html.EditorFor(model => model.Email, new { @class = "input-xlarge" })
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <!-- region input-->
+            <div class="control-group col-lg-6">
+                <label class="control-label">Province</label>
+                <div class="controls">
+                    @Html.EditorFor(model => model.Province, new { @class = "input-xlarge" })
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <!-- postal-code input-->
+            <div class="control-group col-lg-6">
+                <label class="control-label">Postal Code</label>
+                <div class="controls">
+                    @Html.EditorFor(model => model.Province, new { @class = "input-xlarge" })
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <div class="control-group col-lg-6">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                @Html.ActionLink("Cancel", "Index", new { @class = "btn" })
+            </div>
+        </div>
+    </div>
+}

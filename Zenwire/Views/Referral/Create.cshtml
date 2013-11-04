@@ -1,0 +1,126 @@
+﻿
+@model Zenwire.Models.ReferralModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<div class="container">
+    <div class="form-horizontal">
+        <fieldset>
+            <legend>Referral</legend>
+
+            @using (Ajax.BeginForm("AddPayCode", "Referral",
+                new AjaxOptions()
+                {
+                    HttpMethod = "POST",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "PayCodes",
+                }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                <!-- products input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">Product</label>
+                    <div class="controls">
+                        @Html.DropDownListFor(model => model.SelectedPayCode, new SelectList(Model.PayCodes.ToList(), "Id", "Description"), "- Select -")
+                        <input type="submit" value="Add" />
+
+                    </div>
+                </div>
+
+                <!-- pay codes list -->
+                <div id="PayCodes">
+                    test test test
+                    @Html.Partial("_PayCodesPartial", Model)
+                </div>
+            }
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <!-- customer input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">First Name</label>
+                    <div class="controls ">
+                        @Html.EditorFor(model => model.Customer.FirstName, new { @class = "input-xlarge col-md-12" })
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="control-group col-lg-6">
+                    <label class="control-label">Last Name</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.Customer.LastName, new { @class = "input-xlarge" })
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <!-- address-line1 input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">Address Line 1</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.Customer.Address, new { @class = "input-xlarge" })
+                    </div>
+                </div>
+                <!-- city input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">City / Town</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.Customer.City, new { @class = "input-xlarge" })
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <!-- phone input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">Phone</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.Customer.Phone, new { @class = "input-xlarge" })
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <!-- email input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">Email</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.Customer.Email, new { @class = "input-xlarge" })
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <!-- region input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">Province</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.Customer.Province, new { @class = "input-xlarge" })
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <!-- postal-code input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">Postal Code</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.Customer.Province, new { @class = "input-xlarge" })
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+
+                <!-- employee input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">Employee ID</label>
+                    <div class="controls ">
+                        @Html.EditorFor(model => model.Employee.Id, new { @class = "input-xlarge" })
+                        @Html.ValidationMessageFor(model => model.Referral.EmployeeId)
+                    </div>
+                </div>
+
+                <div class="control-group col-lg-6">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    @Html.ActionLink("Cancel", "Index", new { @class = "btn" })
+                </div>
+            }
+        </fieldset>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")

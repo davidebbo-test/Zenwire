@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.Common.dotCover.ActivityTracking.GA</name>
+    </assembly>
+    <members>
+        <member name="T:JetBrains.Common.ActivityTracking.GA.GoogleAnalyticsTracker.Tracker">
+            <summary>
+            DO NOT CHANGE this code hard, because this code is from downloaded thid-party library and slightly adapted to conform our needs. 
+            So any changes in this code will cause problems in case of merging with future versions of library!
+            </summary>
+        </member>
+        <member name="F:JetBrains.Common.ActivityTracking.GA.GoogleAnalyticsTracker.Tracker.Campaign.CampaignName">
+            <summary>
+            it is utmccn the campaign name 
+            </summary>
+        </member>
+        <member name="F:JetBrains.Common.ActivityTracking.GA.GoogleAnalyticsTracker.Tracker.Campaign.CampaignSource">
+            <summary>
+            it is utmcsr the campaign source 
+            </summary>
+        </member>
+        <member name="F:JetBrains.Common.ActivityTracking.GA.GoogleAnalyticsTracker.Tracker.Campaign.CampaignMedium">
+            <summary>
+            it is utmcmd the campaign medium 
+            </summary>
+        </member>
+        <member name="F:JetBrains.Common.ActivityTracking.GA.GoogleAnalyticsTracker.Tracker.Campaign.CampaignTerm">
+            <summary>
+            it is utmctr the campaign term (aka keyword) 
+            null by default
+            </summary>
+        </member>
+        <member name="F:JetBrains.Common.ActivityTracking.GA.GoogleAnalyticsTracker.Tracker.Campaign.CampaignContent">
+            <summary>
+            it is utmcct the campaign content
+            null by default
+            </summary>
+        </member>
+        <member name="T:JetBrains.Common.ActivityTracking.GA.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Common.ActivityTracking.GA.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Common.ActivityTracking.GA.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Common.ActivityTracking.GA.Properties.Resources.WrongGoogleProfileID">
+            <summary>
+              Looks up a localized string similar to The Google Analytics Profile Id should be in this format: &quot;UA-12345-1&quot;.
+            </summary>
+        </member>
+    </members>
+</doc>

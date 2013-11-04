@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.dotCover.Navigation.Model.VS</name>
+    </assembly>
+    <members>
+        <member name="T:JetBrains.dotCover.Navigation.Model.PsiLambdaFinder">
+            <summary>
+            Finds lambdas within given PSI subtree
+            </summary>
+        </member>
+        <member name="F:JetBrains.dotCover.Navigation.Model.PsiLambdaFinder.myDepth">
+            <summary>
+            Current lambda-depth of search. It is the current index in myLambdaPath
+            </summary>
+        </member>
+        <member name="F:JetBrains.dotCover.Navigation.Model.PsiLambdaFinder.myCounter">
+            <summary>
+            Current number of lambda with the appropriate signature.
+            </summary>
+        </member>
+        <member name="F:JetBrains.dotCover.Navigation.Model.PsiLambdaFinder.mySkipChildren">
+            <summary>
+            Flag to skip children. Used to detect when we go out of the lambda
+            </summary>
+        </member>
+    </members>
+</doc>

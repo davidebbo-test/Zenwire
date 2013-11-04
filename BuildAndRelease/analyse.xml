@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AnalyseParams>
+  <TargetExecutable>..\BuildAndRelease\NUnit\nunit-console.exe</TargetExecutable>
+  <TargetArguments>..\Tests.Unit.Zenwire\Bin\Debug\Tests.Unit.Zenwire.dll</TargetArguments>
+  <TargetWorkingDir>..\Zenwire\Bin</TargetWorkingDir>
+  <Output>Zenwire.html</Output>
+  <ReportType>HTML</ReportType>
+  
+  <Filters>
+    <IncludeFilters>
+      <FilterEntry>
+        <ModuleMask>*</ModuleMask>
+        <ClassMask>*</ClassMask>
+        <FunctionMask>*</FunctionMask>
+      </FilterEntry>
+    </IncludeFilters>
+    <ExcludeFilters>
+      <FilterEntry>
+        <ModuleMask>*Test*</ModuleMask>
+        <ClassMask>*</ClassMask>
+        <FunctionMask>*</FunctionMask>
+      </FilterEntry>
+    </ExcludeFilters>
+  </Filters>
+</AnalyseParams>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\projects\zenwire\zenwire\controllers\productcontroller.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Web.Mvc;
+using Zenwire.Domain;
+using Zenwire.Services;
+
+namespace Zenwire.Controllers
+{
+    public class ProductController : Controller
+    {
+        private readonly IProductService _productService;
+
+        public ProductController(IProductService productService)
+        {
+            _productService = productService;
+        }
+
+        //
+        // GET: /Product/
+
+        public ActionResult Index()
+        {
+            return View(_productService.Get());
+        }
+
+        //
+        // GET: /Product/Details/5
+
+        public ActionResult Details(int id = 0)
+        {
+            Product product = _productService.Get(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+        //
+        // GET: /Product/Create
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Product/Create
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _productService.Add(product);
+                return RedirectToAction(&quot;Index&quot;);
+            }
+
+            return View(product);
+        }
+
+        //
+        // GET: /Product/Edit/5
+
+        public ActionResult Edit(int id = 0)
+        {
+            Product product = _productService.Get(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+        //
+        // POST: /Product/Edit/5
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _productService.Update(product);
+                return RedirectToAction(&quot;Index&quot;);
+            }
+            return View(product);
+        }
+
+        //
+        // GET: /Product/Delete/5
+
+        public ActionResult Delete(int id = 0)
+        {
+            Product product = _productService.Get(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+        //
+        // POST: /Product/Delete/5
+
+        [HttpPost, ActionName(&quot;Delete&quot;)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            _productService.Remove(id);
+            return RedirectToAction(&quot;Index&quot;);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,9,11,65,0],[12,9,12,10,0],[13,13,13,46,0],[14,9,14,10,0],[20,9,20,10,0],[21,13,21,48,0],[22,9,22,10,0],[28,9,28,10,0],[29,13,29,55,0],[30,13,30,33,0],[31,13,31,14,0],[32,17,32,39,0],[34,13,34,34,0],[35,9,35,10,0],[41,9,41,10,0],[42,13,42,27,0],[43,9,43,10,0],[51,9,51,10,0],[52,13,52,36,0],[53,13,53,14,0],[54,17,54,46,0],[55,17,55,50,0],[58,13,58,34,0],[59,9,59,10,0],[65,9,65,10,0],[66,13,66,55,0],[67,13,67,33,0],[68,13,68,14,0],[69,17,69,39,0],[71,13,71,34,0],[72,9,72,10,0],[80,9,80,10,0],[81,13,81,36,0],[82,13,82,14,0],[83,17,83,49,0],[84,17,84,50,0],[86,13,86,34,0],[87,9,87,10,0],[93,9,93,10,0],[94,13,94,55,0],[95,13,95,33,0],[96,13,96,14,0],[97,17,97,39,0],[99,13,99,34,0],[100,9,100,10,0],[108,9,108,10,0],[109,13,109,40,0],[110,13,110,46,0],[111,9,111,10,0]]);
+    </script>
+  </body>
+</html>

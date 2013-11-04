@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.dotCover.SnapshotCore.Model</name>
+    </assembly>
+    <members>
+        <member name="T:JetBrains.dotCover.SnapshotCore.Model.Interface.ExceptionExtensions">
+            <summary>
+            The goal is to unify error handling for local and remote (workspace host) code
+            </summary>
+        </member>
+        <member name="T:JetBrains.dotCover.SnapshotCore.Model.Interface.ICustomEnumerable`1">
+            <summary>
+            DataContractSerializer in CLR2 fails to handle LINQ-specific enumerables.
+            Custom interface helps to guarantee that all enumerables transfered via WCF are list-based (and thus easily serializable by CLR2)
+            </summary>
+        </member>
+        <member name="M:JetBrains.dotCover.SnapshotCore.Model.Util.ConvolutionUtil.Convolve``1(System.Collections.Generic.IEnumerable{``0},System.Int32,JetBrains.Application.Progress.IProgressIndicator,JetBrains.dotCover.SnapshotCore.Model.Util.ConvolutionUtil.Func{System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Boolean,JetBrains.Application.Progress.IProgressIndicator,``0})">
+            <summary>
+            Performs convolution
+            </summary>
+            <typeparam name="T">item type</typeparam>
+            <param name="source">source collection</param>
+            <param name="maxItemsNumber">max number of items to be processed simultaneously</param>
+            <param name="progress">progress indicator</param>
+            <param name="func">convolution function: (itemsToConvolve, firstItemIndex, lastItemIndex, isLastStep, progress) => convolvedItem</param>
+            <returns>resulting item</returns>
+        </member>
+    </members>
+</doc>

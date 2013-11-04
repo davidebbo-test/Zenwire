@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.dotCover.CoverageAnalysis.Model</name>
+    </assembly>
+    <members>
+        <member name="M:JetBrains.dotCover.CoverageAnalysis.Model.Interface.ICoverageConfiguration.SetCoreLogMasks(System.String[])">
+            <exception cref="T:System.Exception">in case of failure</exception>
+        </member>
+        <member name="T:JetBrains.dotCover.CoverageAnalysis.Model.Interface.LauncherConflictResolutionPolicy">
+            <summary>
+            Specifies the behaviour for the case when we are about to start profiling session 
+            while anothe one is already in progress
+            </summary>
+        </member>
+    </members>
+</doc>

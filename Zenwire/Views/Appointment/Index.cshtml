@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Appointment>
+
+@Styles.Render("~/Content/fullcalendar")
+@Html.Partial("_LayoutPartial") 
+<div class="container">
+    <b>@Html.ActionLink("Add New", "Create", new { @class = "btn btn-primary btn-xs" })</b>
+    <div id="calendar"></div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ScheduledStart)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Customer.Address)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ScheduledStart)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Customer)*@
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Appointment Details</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-assign" type="button" class="btn btn-default" style="display: none">Assign</button>
+                    <button id="btn-edit" type="button" class="btn btn-primary">Edit</button>
+                    <button id="btn-close" type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+ 
+    <!-- /.modal -->
+     
+</div>
+@Scripts.Render("~/bundles/fullcalendar")

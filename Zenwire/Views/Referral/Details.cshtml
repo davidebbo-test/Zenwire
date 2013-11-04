@@ -1,0 +1,36 @@
+﻿@model Zenwire.Domain.Referral
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Referral</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Product.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Product.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Customer.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Customer.FirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Employee.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Employee.FirstName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

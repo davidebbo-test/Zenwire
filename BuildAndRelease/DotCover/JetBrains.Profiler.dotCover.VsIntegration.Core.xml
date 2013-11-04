@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.Profiler.dotCover.VsIntegration.Core</name>
+    </assembly>
+    <members>
+        <member name="T:JetBrains.Profiler.VsIntegration.Core.ProjectGuids">
+            http://www.mztools.com/articles/2008/mz2008017.aspx
+            http://workblog.pilin.name/2012/11/visual-studio-project-type-guids.html
+        </member>
+    </members>
+</doc>

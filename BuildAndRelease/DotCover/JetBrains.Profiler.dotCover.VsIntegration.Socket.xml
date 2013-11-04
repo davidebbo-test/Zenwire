@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.Profiler.dotCover.VsIntegration.Socket</name>
+    </assembly>
+    <members>
+        <member name="F:JetBrains.Profiler.VsIntegration.Socket.Impl.LocalStandaloneConfigurationBuilder.Interfaces.IVCCollectionGuid">
+            http://msdn.microsoft.com/en-us/library/microsoft.visualstudio.vcprojectengine.ivccollection.aspx
+        </member>
+        <member name="F:JetBrains.Profiler.VsIntegration.Socket.Impl.LocalStandaloneConfigurationBuilder.Interfaces.VCConfigurationGuid">
+            http://msdn.microsoft.com/en-us/library/microsoft.visualstudio.vcprojectengine.vcconfiguration.aspx
+        </member>
+        <member name="F:JetBrains.Profiler.VsIntegration.Socket.Impl.LocalStandaloneConfigurationBuilder.Interfaces.VCProjectGuid">
+            http://msdn.microsoft.com/en-us/library/microsoft.visualstudio.vcprojectengine.vcproject.aspx
+        </member>
+    </members>
+</doc>

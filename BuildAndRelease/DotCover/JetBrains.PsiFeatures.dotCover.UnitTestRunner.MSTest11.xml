@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.PsiFeatures.dotCover.UnitTestRunner.MSTest11</name>
+    </assembly>
+    <members>
+        <member name="M:JetBrains.ReSharper.UnitTestRunner.MSTest11.MsTest11Runner.SetResultsDirectoryNode(System.String,JetBrains.ReSharper.UnitTestRunner.MSTest.MsTestTestAssemblyTask)">
+            <summary>
+            Sets &lt;ResultsDirectory&gt; node to %solution%/TestResults
+            </summary>
+            <param name="settingsXml"></param>
+            <param name="assemblyTask"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

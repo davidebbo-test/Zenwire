@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.dotCover.SignatureDefinitions</name>
+    </assembly>
+    <members>
+        <member name="P:JetBrains.dotCover.SignatureDefinitions.ClassTypeSignature.GenericArguments">
+            <summary>
+            Generic arguments of the type.
+            Returns empty enumeration if no type has no parameters
+            </summary>
+        </member>
+    </members>
+</doc>

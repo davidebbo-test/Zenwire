@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.dotCover.ShellBase</name>
+    </assembly>
+    <members>
+        <member name="M:JetBrains.dotCover.ShellBase.DotCoverLicenseRegistryInstaller.InstallStatic(JetBrains.Application.Install.Installer)">
+            <summary>
+            Called once on the object during the registration process.
+            </summary>
+            <param name="installer">The installer object that provides the installation data.</param>
+            <returns>The list of the Registry entries to write, or <c>Null</c> if none.</returns>
+        </member>
+        <member name="M:JetBrains.dotCover.ShellBase.DotCoverLicenseRegistryInstaller.InstallInstance(JetBrains.Application.Install.Installer,System.Object)">
+            <summary>
+            Called for each of the attributes of the requested type encountered in the known assemblies.
+            </summary>
+            <param name="installer">The installer object that provides the installation data.</param>
+            <param name="attributeInstance">Instance of the attribute to process.</param>
+            <returns>The list of the Registry entries to write, or <c>Null</c> if none.</returns>
+        </member>
+    </members>
+</doc>

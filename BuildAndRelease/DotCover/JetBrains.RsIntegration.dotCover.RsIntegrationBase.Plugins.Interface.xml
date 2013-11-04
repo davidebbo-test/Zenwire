@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.RsIntegration.dotCover.RsIntegrationBase.Plugins.Interface</name>
+    </assembly>
+    <members>
+        <member name="P:JetBrains.RsIntegration.RsIntegrationBase.Plugins.Interface.IRsPluginManager.PluginState">
+            <summary>
+            True if dotCover Interated with R#
+            </summary>
+        </member>
+        <member name="P:JetBrains.RsIntegration.RsIntegrationBase.Plugins.Interface.IRsPluginManager.InstalledRsVersion">
+            <summary>
+            Null if no R# Installed
+            </summary>
+        </member>
+    </members>
+</doc>

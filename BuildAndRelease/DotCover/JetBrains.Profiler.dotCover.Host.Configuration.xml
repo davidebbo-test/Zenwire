@@ -1,0 +1,493 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.Profiler.dotCover.Host.Configuration</name>
+    </assembly>
+    <members>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.Port">
+            <summary>
+            Valid only when <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.LaunchType"/> is <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressLaunchType.ApplicationPath"/>
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.RunBrowserOnRemoteComputer">
+            <summary>
+            Valid only when <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.RunBrowser"/> is true.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.SiteId">
+            <summary>
+            Valid only when <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.LaunchType"/> is <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressLaunchType.Config"/>
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.myApplicationPath">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.ApplicationPath"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.myConfigPath">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.ConfigPath"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.myIISExpress">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.IISExpress"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.myRunBrowserArgument">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.RunBrowserArgument"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.myRuntimeVersion">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.RuntimeVersion"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.mySite">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.Site"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.ConfigPath">
+            <summary>
+            Valid only when <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.LaunchType"/> is <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressLaunchType.Config"/>
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.Site">
+            <summary>
+            Valid only when <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.LaunchType"/> is <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressLaunchType.Config"/>
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.ApplicationPath">
+            <summary>
+            Valid only when <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.LaunchType"/> is
+              <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressLaunchType.ApplicationPath"/>
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.RuntimeVersion">
+            <summary>
+            Valid only when <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressArgument.LaunchType"/> is
+              <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISExpressLaunchType.ApplicationPath"/>
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.MetroArgument.myAppUserModelId">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.MetroArgument.AppUserModelId"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.MetroArgument.myDisplayId">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.MetroArgument.DisplayName"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.MetroArgument.myPackageFullName">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.MetroArgument.PackageFullName"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Host.Configuration.Argument.MetroArgument.AppUserModelId">
+            <summary>
+            The metro application won't run if <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.MetroArgument.AppUserModelId"/> is empty! However, all preparations will be made.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Host.Configuration.Argument.MetroArgument.DisplayName">
+            <summary>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.AttributeFilterInfo.myTypeFilter">
+            <summary>
+              Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.AttributeFilterInfo.TypeFilter"/>
+              Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.ScopeInfo.myDenyAttributeFilters">
+            <summary>
+              Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.ScopeInfo.DenyAttributeFilters"/>
+              Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.ScopeInfo.myPatternFilters">
+            <summary>
+              Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.ScopeInfo.PatternFilters"/>
+              Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.PatternFilterInfo.myAssemblyFilter">
+            <summary>
+              Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.PatternFilterInfo.AssemblyFilter"/>
+              Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.PatternFilterInfo.myAssemblyVersionFilter">
+            <summary>
+              Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.PatternFilterInfo.AssemblyVersionFilter"/>
+              Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.PatternFilterInfo.myClassFilter">
+            <summary>
+              Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.PatternFilterInfo.TypeFilter"/>
+              Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.PatternFilterInfo.myFunctionFilter">
+            <summary>
+              Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.PatternFilterInfo.MethodFilter"/>
+              Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.WcfHostArgument.myClientArguments">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.WcfHostArgument.ClientArguments"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.WcfHostArgument.myClientPath">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.WcfHostArgument.ClientPath"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.WcfHostArgument.myConfigPath">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.WcfHostArgument.ConfigPath"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.WcfHostArgument.myLibraryPath">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.WcfHostArgument.LibraryPath"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.WcfHostArgument.myWcfHost">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.WcfHostArgument.WcfHost"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.InjectAttributeInfo.myAssemblyOrModuleFilter">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.InjectAttributeInfo.AssemblyOrModuleFilter"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.InjectAttributeInfo.myClassFilter">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.InjectAttributeInfo.ClassFilter"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.AttachArgument.myRuntimeVersion">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.AttachArgument.RuntimeVersion"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.RunBrowserArgument.myBrowser">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.RunBrowserArgument.Browser"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.RunBrowserArgument.myDisplayBrowser">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.RunBrowserArgument.DisplayBrowser"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.RunBrowserArgument.myUrl">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.RunBrowserArgument.Url"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Host.Configuration.Argument.RunBrowserArgument.DisplayBrowser">
+            <summary>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Host.Configuration.Argument.RunBrowserArgument.Browser">
+            <summary>
+            <result>Empty value is default browser.</result>
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.SilverlightArgument.myRunBrowserArgument">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.SilverlightArgument.RunBrowserArgument"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.CoreRegistration.RegistryFreeInstructionSet">
+            Note: Valid only for desktop and silverlight applications!
+            http://social.msdn.microsoft.com/Forums/en-US/netfxtoolsdev/thread/4ff8cb98-ceee-4dae-a543-75e53109b53d
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.UserProperties.myTag">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Options.UserProperties.Tag"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.UserProperties.myValues">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Options.UserProperties.Values"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.UserProperty.myKey">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Options.UserProperty.Key"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.UserProperty.myValue">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Options.UserProperty.Value"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.ProfileConfiguration.myCoreOptions">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.ProfileConfiguration.CoreOptions"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.ProfileConfiguration.myHostOptions">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.ProfileConfiguration.HostOptions"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.HostOptions.ProcessDownloadedSnapShots">
+            <summary>
+            Use only for test purposes!
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.HostOptions.myHostTempPath">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Options.HostOptions.HostTempPath"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.HostOptions.myUserData">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Options.HostOptions.UserData"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.InjectInfo.myScope">
+            <summary>
+              Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.InjectInfo.Scope"/>
+              Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.InjectInfo.mySearchPaths">
+            <summary>
+              Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.InjectInfo.SearchPaths"/>
+              Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.InjectFilterInfo.myAssemblyOrModuleFilter">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.InjectFilterInfo.AssemblyOrModuleFilter"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.InjectFilterInfo.myClassFilter">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.InjectFilterInfo.ClassFilter"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.InjectFilterInfo.myFunctionFilter">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.InjectFilterInfo.FunctionFilter"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.IISArgument.RunBrowserOnRemoteComputer">
+            <summary>
+            Valid only when <see cref="F:JetBrains.Profiler.Host.Configuration.Argument.IISArgument.RunBrowser"/> is true.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.IISArgument.myRunBrowserArgument">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.IISArgument.RunBrowserArgument"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.CoreLogIndex.Com">
+            Core registry/unregistry logs also will be enabled !
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.CoreLogIndex.PdbBridge">
+            PDB server logs also will be enabled !
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.CoreLogMask.Com">
+            Core registry/unregistry logs also will be enabled !
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.CoreLogMask.PdbBridge">
+            PDB server logs also will be enabled !
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.DevelopmentServerArgument.myDevelopmentServer">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.DevelopmentServerArgument.DevelopmentServer"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.DevelopmentServerArgument.myPhysicalPath">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.DevelopmentServerArgument.PhysicalPath"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.DevelopmentServerArgument.myRunBrowserArgument">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.DevelopmentServerArgument.RunBrowserArgument"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.DevelopmentServerArgument.myVirtualPath">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.DevelopmentServerArgument.VirtualPath"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.CoreOptions.myCoreRegistrationRegistryFreeInstructionSet">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Options.CoreOptions.CoreTempPath"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.CoreOptions.myCoreTempPath">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Options.CoreOptions.CoreTempPath"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.DescriptionPropertyFlags.Minor">
+            <summary>
+            A property with this flag will be shown in a configuration only if its
+            value differs from values of this property in other configurations.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.DescriptionPropertyFlags.Significant">
+            <summary>
+            A property with this flag will be shown always in every configuration, no matter
+            whether its value differes from that in other configuration or no.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.DescriptionPropertyFlags.AnywayHide">
+            <summary>
+            A property marke with this flag participates in argument comparison, and hash code
+            computation but is never shown on a screen.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.DescriptionPropertyFlags.AnywayArray">
+            <summary>
+            A property is an array which is represented in a very special way in every configuration.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.WindowsServiceArgument.myArguments">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.WindowsServiceArgument.Arguments"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.WindowsServiceArgument.myDisplayServiceName">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.WindowsServiceArgument.DisplayServiceName"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.WindowsServiceArgument.myServiceName">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.WindowsServiceArgument.ServiceName"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Host.Configuration.Argument.WindowsServiceArgument.DisplayServiceName">
+            <summary>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Options.CoreConfiguration.Test">
+            <summary>
+            Note: Only for test purposes !!! Do not use this flag in production !!!
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.CoverageInfo.myInjectInfo">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.CoverageInfo.InjectInfo"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.MemoryInfo.myEtwEventsInfo">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.MemoryInfo.EtwEventsInfo"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.PerformanceInfo.EnableJitInlining">
+            <remarks>
+            Valid only when <see cref="F:JetBrains.Profiler.Host.Configuration.Info.PerformanceInfo.MeasureType"/> is <see cref="F:JetBrains.Profiler.Host.Configuration.Info.MeasureType.Tracing"/> or <see cref="F:JetBrains.Profiler.Host.Configuration.Info.MeasureType.TracingInject"/>.
+            </remarks>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.PerformanceInfo.MeterKind">
+            <remarks>
+            Do not use <see cref="F:JetBrains.Profiler.Host.Configuration.Info.MeterKind.ThreadTime"/> when <see cref="F:JetBrains.Profiler.Host.Configuration.Info.PerformanceInfo.MeasureType"/> is <see cref="F:JetBrains.Profiler.Host.Configuration.Info.MeasureType.Tracing"/> or <see cref="F:JetBrains.Profiler.Host.Configuration.Info.MeasureType.TracingInject"/> profiler.
+            <see cref="F:JetBrains.Profiler.Host.Configuration.Info.MeterKind.PerformanceCounter"/> must be default, because it is available for all Windows platforms!
+            </remarks>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.PerformanceInfo.PrecisionMode">
+            <remarks>
+            Valid only when <see cref="F:JetBrains.Profiler.Host.Configuration.Info.PerformanceInfo.MeasureType"/> is <see cref="F:JetBrains.Profiler.Host.Configuration.Info.MeasureType.Tracing"/> or <see cref="F:JetBrains.Profiler.Host.Configuration.Info.MeasureType.TracingInject"/>.
+            </remarks>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.PerformanceInfo.myEtwEventsInfo">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.PerformanceInfo.EtwEventsInfo"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Info.PerformanceInfo.myInjectInfo">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Info.PerformanceInfo.InjectInfo"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Host.Configuration.Info.PerformanceInfo.InjectInfo">
+            <summary>
+            Valid only when <see cref="F:JetBrains.Profiler.Host.Configuration.Info.PerformanceInfo.MeasureType"/> is <see cref="F:JetBrains.Profiler.Host.Configuration.Info.MeasureType.TracingInject"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.StandaloneArgument.myArguments">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.StandaloneArgument.Arguments"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.StandaloneArgument.myFileName">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.StandaloneArgument.FileName"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+        <member name="F:JetBrains.Profiler.Host.Configuration.Argument.StandaloneArgument.myWorkingDirectory">
+            <summary>
+            Use <see cref="P:JetBrains.Profiler.Host.Configuration.Argument.StandaloneArgument.WorkingDirectory"/>
+            Note: Do not use this field in Equals and GetHashCode !
+            </summary>
+        </member>
+    </members>
+</doc>

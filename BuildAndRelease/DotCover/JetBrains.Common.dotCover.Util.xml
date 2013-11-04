@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.Common.dotCover.Util</name>
+    </assembly>
+    <members>
+        <member name="F:JetBrains.Common.Util.AdjacencyListEx`1.myArcStarts">
+            <summary>
+            The number i at index #n is the index of ArcEnds for the vertex #n in the graph.
+            In <see cref="F:JetBrains.Common.Util.AdjacencyListEx`1.myArcEnds"/> at index i located the first related vertex of the vertex #n.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Common.Util.AdjacencyListEx`1.myArcEnds">
+            <summary>
+            The list of referenced nodes.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.Util.IAsyncOperation.Cancel">
+            <summary>
+            Cancels the operation. Returns immediately, does not wait till the operation execution is breaking physicaly.
+            Hence canceled task can fire <see cref="E:JetBrains.Common.Util.IAsyncOperation.Finished"/> because of race condition but logicaly is canceled.
+            Use <see cref="P:JetBrains.Common.Util.IAsyncOperation.IsCanceled"/> to determine if the operation was canceled or not.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Common.Util.IAsyncOperation.OperationProgress">
+            <summary>
+            Indicates state of the operation progress in percents from 0 to 100.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Common.Util.IAsyncOperation.SubOperations">
+            <summary>
+            Contains a stack of currently executing sub-operations. You can listen changes in this stack via <see cref="T:System.Collections.Specialized.INotifyCollectionChanged"/>
+            </summary>
+        </member>
+        <member name="P:JetBrains.Common.Util.IAsyncOperation.CanCancel">
+            <summary>
+            Returns true if the operation supports cancelation
+            </summary>
+        </member>
+        <member name="P:JetBrains.Common.Util.IAsyncOperation.IsCanceled">
+            <summary>
+            True if the operation was canceled - method <see cref="M:JetBrains.Common.Util.IAsyncOperation.Cancel"/> was called to.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Common.Util.ITask.FinishedEvent">
+            <summary>
+            Use this for blocking synchronization
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.Util.AsyncTaskBase.#ctor(JetBrains.Common.Util.AsyncTaskBase,System.Int32)">
+            <summary>
+            This constructor is used only for creation of suboperations. For such operations <see cref="M:JetBrains.Common.Util.AsyncTaskBase.Execute(JetBrains.Common.Util.ITaskExecutionEnvironment)"/> method 
+            is never invoked, so execution controller won't be recreated
+            </summary>
+            <param name="parent"></param>
+            <param name="parentStepsCount"></param>
+        </member>
+        <member name="M:JetBrains.Common.Util.IAsyncOperation`1.GetResult">
+            <summary>
+            Returns the result of task execution. Blocks until task will finished even if task is not executed.
+             </summary>
+            <exception>Throw an exception if task execution finished interupted by exception.</exception>
+            <returns>Returns the result of task execution.</returns>
+        </member>
+        <member name="T:JetBrains.Common.Util.ArrayPart`1">
+            <summary>
+            Represent an enumerable part of the array.
+            </summary>
+            <typeparam name="T">Type of the array item.</typeparam>
+        </member>
+        <member name="T:JetBrains.Common.Util.IIndexable`1">
+            <summary>
+            Countable readonly collection with access by index
+            </summary>
+        </member>
+        <member name="T:JetBrains.Common.Util.ICountable`1">
+            <summary>
+            Exposes the enumerator, which supports a simple iteration over a collection of a specified type 
+            and count of objects in the collection.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.Util.ArrayPart`1.#ctor(JetBrains.Common.Util.IArray{`0},System.Int32,System.Int32)">
+            <param name="array">Initial array.</param>
+            <param name="startIndex">Represents the index in the array at which part begins.</param>
+            <param name="length">The part elements number.</param>
+        </member>
+        <member name="M:JetBrains.Common.Util.BinaryHeap`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Comparison{`0})">
+            <summary>
+            Works with max 3*storage.Count compares. Prefer to use this constructor to make BinaryHeap from Enumerable
+            </summary>
+            <param name="storage"></param>
+            <param name="comparison"></param>
+        </member>
+        <member name="M:JetBrains.Common.Util.ChunkArray`1.#ctor(System.Int32,JetBrains.Common.Util.ChunkCollectionMode)">
+            <param name="length">The count of array elements</param>
+            <param name="mode">The mode how ChunkArray works <see cref="T:JetBrains.Common.Util.ChunkCollectionMode"/> for details</param>
+        </member>
+        <member name="M:JetBrains.Common.Util.ChunkArray`1.#ctor(System.Int32,System.Int32,JetBrains.Common.Util.ChunkCollectionMode)">
+            <summary>
+            Creates chunk array whith user defined chunk length. Uses <see cref="F:JetBrains.Common.Util.ChunkCollectionMode.Auto"/>
+            </summary>
+            <param name="length">The length of the array</param>
+            <param name="chunkLength">The length of the one chunk. Must be pow of 2</param>
+            /// <param name="mode">The mode how ChunkArray works <see cref="T:JetBrains.Common.Util.ChunkCollectionMode"/> for details</param>
+        </member>
+        <member name="F:JetBrains.Common.Util.ChunkCollectionMode.AntiLoh">
+            <summary>
+            Guaranties that any data are not allocated in Large Object Heap.
+            Can lead performance losing because of using ChunkArray as internal data structure.
+            
+            If an array element is bigger than 84500 bytes it is allocated in LOH in any case.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Common.Util.ChunkCollectionMode.Auto">
+            <summary>
+            Tries to keep user and internal data out of Large Object Heap but if amount of data too big 
+            allocates the internal array of chunks in the LOH.
+            
+            If an array element is bigger than 84500 bytes it is allocated in LOH in any case.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.Util.ChunkList`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Not efficiant method
+            </summary>
+        </member>
+        <member name="T:JetBrains.Common.Util.CountableWrapper`1">
+            <summary>
+            Default implementation for the <see cref="T:JetBrains.Common.Util.ICountable`1"/>
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.Util.EnumerableExtension.MergeIfSorted``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Comparison{``0})">
+            <summary>
+            Merge to enumerables into one sorted array. Both enumerables should be already sorted.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="first"></param>
+            <param name="second"></param>
+            <param name="comprison"> </param>
+            <returns></returns>
+        </member>
+        <member name="M:JetBrains.Common.Util.EnumerableExtension.Intersect``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Comparison{``0})">
+            <summary>
+            Intersects two sorted enumerables.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="first">Sorted enumerable</param>
+            <param name="second">Sorted enumerable</param>
+            <param name="comparison"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JetBrains.Common.Util.IndexableSegment`1">
+            <summary>
+            Represent an enumerable part of the array.
+            </summary>
+            <typeparam name="T">Type of the array item.</typeparam>
+        </member>
+        <member name="M:JetBrains.Common.Util.IndexableSegment`1.#ctor(JetBrains.Common.Util.IIndexable{`0},System.Int32,System.Int32)">
+            <param name="array">Initial array.</param>
+            <param name="startIndex">Represents the index in the array at which part begins.</param>
+            <param name="length">The part elements number.</param>
+        </member>
+        <member name="T:JetBrains.Common.Util.ListSlice`1">
+            <summary>
+            Represent an enumerable part of the array.
+            </summary>
+            <typeparam name="T">Type of the array item.</typeparam>
+        </member>
+        <member name="M:JetBrains.Common.Util.ListSlice`1.#ctor(System.Collections.Generic.List{`0},System.Int32,System.Int32)">
+            <param name="list">Initial array.</param>
+            <param name="startIndex">Represents the index in the array at which part begins.</param>
+            <param name="length">The part elements number.</param>
+        </member>
+        <member name="T:JetBrains.Common.Util.DisposingLogic">
+            <summary>
+            Contains logic that dispose can be called more than once. And guard of calling methods after dispose.
+            Used to delegate implementation of IDisposable to an instance of this class.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.Util.MemoryMappedStream.IInMemoryStream.GetBufferFromPosition(System.Int64,System.IO.SeekOrigin,System.Int32,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="startPosition"></param>
+            <param name="origin"></param>
+            <param name="needBytes">Minimum byte count what we expect</param>
+            <param name="avalableBytes">Avalable bytes. It is more or equal then needBytes</param>
+            <returns></returns>
+        </member>
+        <member name="M:JetBrains.Common.Util.MemoryMappedStream.IInMemoryStream.GetBufferEndAtPosition(System.Int64,System.IO.SeekOrigin,System.Int32,System.Int32@)">
+            <summary>
+            Return pointer to buffer
+            Return value + <see cref="!:avalableBytes "/> points at <see cref="!:endOffset"/>
+            </summary>
+            <param name="endOffset"></param>
+            <param name="origin"></param>
+            <param name="needBytes">Minimum byte count what we expect</param>
+            <param name="avalableBytes">Avalable bytes. It is more or equal then needBytes</param>
+            <returns></returns>
+        </member>
+        <member name="T:JetBrains.Common.Util.ObjectPool`1">
+            <remarks>
+            All methods of this class are thread safe
+            </remarks>>
+            <typeparam name="T">The type of the entities in the pool</typeparam>
+        </member>
+        <member name="M:JetBrains.Common.Util.ObjectPool`1.GetObject(JetBrains.DataFlow.Lifetime)">
+            <summary>
+            Gets an object from the pool. Object is returned to the pool as lifetime is terminated.
+            If there are no vacant objects the new one is created using the factory passed to the constructor
+            </summary>
+            <param name="lifetime">Lifetime of the object using, terminate it when finish using of the object in order to return it to the pool</param>
+            <returns>Return an object from the pool</returns>
+        </member>
+        <member name="M:JetBrains.Common.Util.ObjectPool`1.CreateAndGetObject(JetBrains.DataFlow.Lifetime)">
+            <summary>
+            Creates the new object using factory passed to the constructor and returns it
+            </summary>
+            <param name="lifetime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JetBrains.Common.Util.ObjectPool`1.AddObjectToPool(`0)">
+            <summary>
+            Adds another object to the pool
+            </summary>
+            <param name="object"></param>
+        </member>
+        <member name="T:JetBrains.Common.Util.TransientLifetime">
+            <remarks>
+            Made lazy to avoid useless creation/destruction in algorithms which contract needs lifetime, but realization sometime needs and smotime not
+            </remarks>
+        </member>
+        <member name="T:JetBrains.Common.Util.Tuple`2">
+            <summary>
+            A tuple comprising two items.
+            </summary>
+            <typeparam name="TFirst">The type of the first item in the tuple.</typeparam>
+            <typeparam name="TSecond">The type of the second item in the tuple.</typeparam>
+        </member>
+        <member name="M:JetBrains.Common.Util.Tuple`2.#ctor(`0,`1)">
+            <summary>
+            Initializes a new instance of the <see cref="T:JetBrains.Common.Util.Tuple`2"/> class.
+            </summary>
+            <param name="first">The first item in the tuple.</param>
+            <param name="second">The second item in the tuple.</param>
+        </member>
+        <member name="M:JetBrains.Common.Util.Tuple`2.Equals(JetBrains.Common.Util.Tuple{`0,`1})">
+            <summary>
+            Indicates whether the current tuple is equal to another tuple.
+            </summary>
+            <param name="other">A tuple to compare with this tuple.</param>
+            <returns>true if the current tuple is equal to the <paramref name="other"/> parameter; otherwise, false.</returns>
+        </member>
+        <member name="M:JetBrains.Common.Util.Tuple`2.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.</param>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:JetBrains.Common.Util.Tuple`2.GetHashCode">
+            <summary>
+            Returns a hash code for this tuple.
+            </summary>
+            <returns>A hash code for the current <see cref="T:System.Object"/>.</returns>
+        </member>
+        <member name="M:JetBrains.Common.Util.Tuple`2.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.</returns>
+        </member>
+        <member name="P:JetBrains.Common.Util.Tuple`2.First">
+            <summary>
+            Gets the first item in the tuple.
+            </summary>
+            <value>The first item in the tuple.</value>
+        </member>
+        <member name="P:JetBrains.Common.Util.Tuple`2.Second">
+            <summary>
+            Gets the second item in the tuple.
+            </summary>
+            <value>The second item in the tuple.</value>
+        </member>
+    </members>
+</doc>

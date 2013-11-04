@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\projects\zenwire\zenwire\controllers\appointmentcontroller.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Globalization;
+using System.Linq;
+using System.Web.Mvc;
+using Zenwire.Domain;
+using Zenwire.Services;
+using Zenwire.Models;
+
+namespace Zenwire.Controllers
+{
+    public class AppointmentController : Controller
+    {
+        private readonly IAppointmentService _appointmentService;
+        private readonly ICustomerService _customerService;
+        private readonly IEmployeeService _employeeService;
+
+        public AppointmentController(IAppointmentService appointmentService,ICustomerService customerService, IEmployeeService employeeService)
+        {
+            _appointmentService = appointmentService;
+            _customerService = customerService;
+            _employeeService = employeeService;
+        }
+
+        // GET: /Appointment/
+        public ActionResult Index()
+        {
+            return View(_appointmentService.Get());
+        }
+
+        public ActionResult ThankYou()
+        {
+            return View(&quot;ThankYou&quot;);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Schedule(ScheduleModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var customer = _customerService.GetByEmail(model.CustomerSearch) ??
+                               new Customer() { Email = model.CustomerSearch };
+
+                return View(&quot;Schedule&quot;, new ScheduleModel()
+                {
+                    Customer = customer,
+                    Appointment = new Appointment()
+                    {
+                        Customer = customer,
+                        CustomerId = customer.Id
+                    }
+                });
+            }
+
+            return View(&quot;Schedule&quot;, new ScheduleModel()
+            {
+                Customer = new Customer()
+            });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateAppointment(ScheduleModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var customer = _customerService.Add(model.Appointment.Customer);
+
+                if (customer != null)
+                {
+                    model.Appointment.Customer = customer;
+                    model.Appointment.CustomerId = customer.Id;
+
+                    model.Appointment.ScheduledStart = model.Appointment.ScheduledStart + model.AppointmentTime;
+                    model.Appointment.ScheduledEnd = model.Appointment.ScheduledStart.AddHours(1);
+
+                    _appointmentService.Schedule(model.Appointment);
+                    
+                    if(model.Appointment.Id &gt; 0) return View(&quot;ThankYou&quot;);
+                }
+
+                ModelState.AddModelError(&quot;Error&quot;, &quot;Something went wrong&quot;);
+                return View(&quot;Schedule&quot;, model);
+            }
+
+            return HttpNotFound();
+        }
+
+        public ActionResult Schedule()
+        {
+            return View(&quot;Schedule&quot;, new ScheduleModel()
+            {
+                Customer = new Customer()
+            });
+        }
+
+        // GET: /Appointment/Details/5
+        public ActionResult Details(int id = 0)
+        {
+            Appointment appointment = _appointmentService.Get(id);
+            if (appointment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(appointment);
+        }
+
+        // GET: /Appointment/Create
+        public ActionResult Create()
+        {
+
+            return View(new AppointmentModel()
+            {
+                Customers = _customerService.Get(),
+                Appointment = new Appointment()
+            });
+        }
+
+        // POST: /Appointment/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(AppointmentModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.Appointment.ScheduledStart = model.Appointment.ScheduledStart + model.AppointmentTime;
+                _appointmentService.Schedule(model.Appointment);
+            }
+
+            return RedirectToAction(&quot;Index&quot;);
+        }
+
+        // GET: /Appointment/Edit/5
+        public ActionResult Edit(int id = 0)
+        {
+            Appointment appointment = _appointmentService.Get(id);
+            if (appointment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(new AppointmentModel()
+            {
+                Appointment = appointment,
+                Customers = _customerService.Get()
+            });
+        }
+
+        // POST: /Appointment/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(AppointmentModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.Appointment.ScheduledStart = model.Appointment.ScheduledStart + model.AppointmentTime;
+                
+                if (model.Appointment.CustomerId == 0)
+                {
+                    model.Appointment.CustomerId = _appointmentService.Get(model.Appointment.Id).CustomerId;
+                } 
+                
+                _appointmentService.Schedule(model.Appointment);
+            }
+            
+            model.Customers = _customerService.Get();
+            
+            return View(model);
+        }
+
+        [HttpPost] 
+        public JsonResult ChangeTime(int appointmentId, int days, int minutes, bool confirmUpdate = false)
+        {
+            bool IsSuccess = false;
+            if (appointmentId &gt; 0)
+            {
+                IsSuccess = _appointmentService.ChangeTime(appointmentId, days, minutes, confirmUpdate);
+            }
+            return Json(new { IsSuccess});
+        }
+
+        // GET: /Appointment/Delete/5
+        public ActionResult Delete(int id = 0)
+        {
+            Appointment appointment = _appointmentService.Get(id);
+            if (appointment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(appointment);
+        }
+
+        // POST: /Appointment/Delete/5
+        [HttpPost, ActionName(&quot;Delete&quot;)]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            _appointmentService.Remove(id);
+            return RedirectToAction(&quot;Index&quot;);
+        }
+
+        public JsonResult GetEvents(int start, int end)
+        {
+            
+            var culture = new CultureInfo(&quot;en-CA&quot;);
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0);
+
+            var json = from a in _appointmentService.Get()
+                       where
+                       a.ScheduledStart &gt;= epoch.AddSeconds(start) &amp;&amp;
+                       a.ScheduledStart &lt;= epoch.AddSeconds(end)
+                       select new
+                       {
+                           id = a.Id,
+                           title = a.EmployeeId &gt; 0 ? a.Employee.Fullname : &quot;Unassigned&quot;,
+                           customer = a.Customer.Fullname,
+                           address = a.Customer.Address,
+                           city = a.Customer.City,
+                           phone = a.Customer.Phone,
+                           start = a.ScheduledStart.ToUniversalTime().ToString(&quot;r&quot;,culture),
+                           end = a.ScheduledStart.AddHours(1).ToUniversalTime().ToString(&quot;r&quot;, culture)
+                       };
+
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult GetAvailableHours(DateTime? date, int? appointmentId, int duration)
+        {
+            return Json(_appointmentService.GetAvailableHours(date, appointmentId, duration).Select(x =&gt; 
+                new {
+                    text  = DateTime.Today.Add(x).ToString(&quot;hh:mm tt&quot;),
+                    value = string.Format(&quot;{0:D2}:{1:D2}&quot;, x.Hours, x.Minutes)
+                    }
+                ), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Assign(int id)
+        {
+            Appointment appointment = _appointmentService.Get(id);
+            if (appointment == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(new AppointmentModel()
+            {
+                Appointment = appointment,
+                Customers = _customerService.Get(),
+                Employees = _employeeService.Get()
+            });
+        }
+
+        // POST: /Appointment/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Assign(AppointmentModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _appointmentService.AssignToEmployee(model.Appointment);
+            }
+            return RedirectToAction(&quot;Index&quot;);
+        }
+
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[17,9,17,144,1],[18,9,18,10,1],[19,13,19,54,1],[20,13,20,48,1],[21,13,21,48,1],[22,9,22,10,1],[26,9,26,10,1],[27,13,27,52,1],[28,9,28,10,1],[31,9,31,10,1],[32,13,32,37,1],[33,9,33,10,1],[38,9,38,10,1],[39,13,39,36,1],[40,13,40,14,1],[41,17,42,80,1],[44,17,52,20,1],[55,13,58,16,1],[59,9,59,10,1],[64,9,64,10,1],[65,13,65,36,1],[66,13,66,14,1],[67,17,67,81,1],[69,17,69,38,1],[70,17,70,18,1],[71,21,71,59,1],[72,21,72,64,1],[74,21,74,113,1],[75,21,75,99,1],[77,21,77,69,1],[79,21,79,49,1],[79,50,79,74,1],[82,17,82,75,1],[83,17,83,48,1],[86,13,86,35,1],[87,9,87,10,1],[90,9,90,10,1],[91,13,94,16,1],[95,9,95,10,1],[99,9,99,10,1],[100,13,100,67,1],[101,13,101,37,1],[102,13,102,14,1],[103,17,103,39,1],[105,13,105,38,1],[106,9,106,10,1],[110,9,110,10,1],[112,13,116,16,1],[117,9,117,10,1],[123,9,123,10,1],[124,13,124,36,1],[125,13,125,14,1],[126,17,126,109,1],[127,17,127,65,1],[128,13,128,14,1],[130,13,130,46,1],[131,9,131,10,1],[135,9,135,10,1],[136,13,136,67,1],[137,13,137,37,1],[138,13,138,14,1],[139,17,139,39,1],[141,13,145,16,1],[146,9,146,10,1],[152,9,152,10,1],[153,13,153,36,1],[154,13,154,14,1],[155,17,155,109,1],[157,17,157,55,1],[158,17,158,18,1],[159,21,159,109,1],[160,17,160,18,1],[162,17,162,65,1],[163,13,163,14,1],[165,13,165,54,1],[167,13,167,32,1],[168,9,168,10,1],[172,9,172,10,1],[173,13,173,36,1],[174,13,174,35,1],[175,13,175,14,1],[176,17,176,105,1],[177,13,177,14,1],[178,13,178,43,1],[179,9,179,10,1],[183,9,183,10,1],[184,13,184,67,1],[185,13,185,37,1],[186,13,186,14,1],[187,17,187,39,1],[189,13,189,38,1],[190,9,190,10,1],[196,9,196,10,1],[197,13,197,44,1],[198,13,198,46,1],[199,9,199,10,1],[202,9,202,10,1],[204,13,204,52,1],[205,13,205,59,1],[207,13,209,24,1],[221,25,221,26,1],[223,13,223,61,1],[224,9,224,10,1],[238,9,238,10,1],[239,13,239,67,1],[240,13,240,37,1],[241,13,241,14,1],[242,17,242,39,1],[251,9,251,10,1],[257,9,257,10,1],[258,13,258,36,1],[259,13,259,14,1],[260,17,260,73,1],[261,13,261,14,1],[262,13,262,46,1],[263,9,263,10,1],[209,24,210,65,1],[211,31,221,25,1],[80,17,80,18,0],[228,9,228,10,0],[229,13,230,17,0],[233,22,234,50,0],[235,9,235,10,0],[245,13,250,16,0],[230,17,233,22,0]]);
+    </script>
+  </body>
+</html>

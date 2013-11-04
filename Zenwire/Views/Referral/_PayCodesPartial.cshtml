@@ -1,0 +1,6 @@
+﻿@model Zenwire.Models.ReferralModel
+
+    @foreach(var item in Model.PayCodesList)
+    {
+        string.Format("{0} - {1}", item.Code, item.Description);
+    }

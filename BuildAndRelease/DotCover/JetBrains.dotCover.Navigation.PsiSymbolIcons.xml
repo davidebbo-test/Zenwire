@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.dotCover.Navigation.PsiSymbolIcons</name>
+    </assembly>
+    <members>
+        <member name="T:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconSettings">
+            <summary>
+            Settings for the <see cref="T:JetBrains.UI.Icons.IThemedIconManager"/> and Themed Icons subsystem.
+            </summary>
+        </member>
+        <member name="T:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect">
+            <summary>
+            Standard PSI icon theme aspect values.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect.SymbolsIdea">
+            <summary>
+            JetBrains IDEA lookalike icon set, for better migration.
+            Manual only.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect.SymbolsVs08">
+            <summary>
+            VS8-friendly icon set. Mostly the same as Visual Studio Classic, but with more than 16 colors.
+            In use with VS 8-9-10.
+            Autoselected with VS 8-9-10.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect.SymbolsVs11Color">
+            <summary>
+            VS11-friendly metro-style color-painted icon set. Based on VS11 own icons, but with added color.
+            Autoselected in non-VS environments.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect.SymbolsVs11Gray">
+            <summary>
+            VS11-friendly metro-style mostly-gray icon set. Best mimics VS11 own icons in light theme.
+            Autoselected with VS 11 with light background.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect.SymbolsVs11GrayDark">
+            <summary>
+            VS11-friendly metro-style mostly-gray icon set. Best mimics VS11 own icons dark theme.
+            Autoselected with VS 11 with dark background.
+            </summary>
+        </member>
+        <member name="T:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect.AspectListsForFallback">
+            <summary>
+            The aspect itself (as in outer class), plus lower-priority aspect entries for fallback options specific for the theme.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect.AspectListsForFallback.SymbolsIdea_WithFallback">
+            <summary>
+            Fallback to other themes in order of priority.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect.AspectListsForFallback.SymbolsVs08_WithFallback">
+            <summary>
+            Fallback to other themes in order of priority.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect.AspectListsForFallback.SymbolsVs11Color_WithFallback">
+            <summary>
+            Fallback to other themes in order of priority.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect.AspectListsForFallback.SymbolsVs11GrayDark_WithFallback">
+            <summary>
+            Fallback to other themes in order of priority.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect.AspectListsForFallback.SymbolsVs11Gray_WithFallback">
+            <summary>
+            Fallback to other themes in order of priority.
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeAspect.AspectListsForFallback.Demote(JetBrains.UI.Icons.IconThemeAspect,System.Int32)">
+            <summary>
+            Slightly demotes an aspect in priority to implement fallback in case of missing theme image.
+            </summary>
+            <param name="aspect"></param>
+            <param name="times"></param>
+            <returns></returns>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeSelection.Automatic">
+            <summary>
+            <para>This is the default. A theme is selected based on the current environment.</para>
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeSelection.SymbolsVs08">
+            <summary>
+            VS8-friendly icon set. Mostly the same as Visual Studio Classic, but with more than 16 colors.
+            In use with VS 8-9-10.
+            Autoselected with VS 8-9-10.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeSelection.SymbolsIdea">
+            <summary>
+            JetBrains IDEA lookalike icon set, for better migration.
+            Manual only.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeSelection.SymbolsVs11Gray">
+            <summary>
+            VS11-friendly metro-style mostly-gray icon set. Best mimics VS11 own icons in light theme.
+            Autoselected with VS 11 with light background.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeSelection.SymbolsVs11Color">
+            <summary>
+            VS11-friendly metro-style color-painted icon set. Based on VS11 own icons, but with added color.
+            Autoselected in non-VS environments.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeSelection.SymbolsVs11GrayDark">
+            <summary>
+            VS11-friendly metro-style mostly-gray icon set. Best mimics VS11 own icons dark theme.
+            Autoselected with VS 11 with dark background.
+            </summary>
+        </member>
+        <member name="T:JetBrains.ReSharper.Feature.Services.SymbolIcons.PsiSymbolIconThemeSettingsLoader">
+            <summary>
+            Loads and publishes as the theme aspect the psi symbol icon theme settings.
+            </summary>
+        </member>
+        <member name="T:JetBrains.PsiFeatures.VisualStudio.Core.Services.Core.SymbolIcons.VsPsiSymbolIconThemeSettingsLoader">
+            <summary>
+            Loads and publishes as the theme aspect the psi symbol icon theme settings.
+            </summary>
+        </member>
+    </members>
+</doc>

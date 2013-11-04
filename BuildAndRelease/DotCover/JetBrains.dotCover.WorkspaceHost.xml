@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.dotCover.WorkspaceHost</name>
+    </assembly>
+    <members>
+        <member name="T:JetBrains.dotCover.WorkspaceHost.Workspace.SnapshotToWorkspaceProxyFactory">
+            <summary>
+            Creates dynamic proxies which expose snapshot components into workspace
+            </summary>
+        </member>
+    </members>
+</doc>

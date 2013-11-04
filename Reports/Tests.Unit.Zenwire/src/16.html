@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\projects\zenwire\zenwire\controllers\notificationcontroller.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Diagnostics.CodeAnalysis;
+using System.Web.Mvc;
+using System.Xml.Linq;
+using Zenwire.Domain;
+using Zenwire.Repositories;
+using Zenwire.Services;
+
+namespace Zenwire.Controllers
+{
+    public class NotificationController : Controller
+    {
+        private readonly IAppointmentService _appointmentService;
+
+        public NotificationController(IAppointmentService appointmentService)
+        {
+            _appointmentService = appointmentService;
+        }
+
+        public ContentResult AppointmentConfirmation(int id = 0)
+        {
+            Appointment appointment = _appointmentService.Get(id);
+
+            if (appointment != null)
+            {
+                var response = new XElement(&quot;Response&quot;);
+
+                var appointmentDate = appointment.ScheduledStart.ToString(&quot;dddd, , MMMM, , d, ,&quot;);
+                var appointmentTime = appointment.ScheduledStart.ToString(&quot;h, , m, ,&quot;);
+
+                var appointmentAmPm = appointment.ScheduledStart.ToString(&quot;tt&quot;);
+
+                appointmentAmPm = (appointmentAmPm == &quot;AM&quot;) ? &quot;A, M&quot; : &quot;P, M&quot;;
+
+
+                //var orderStatus = &quot;COMPLETED!&quot;;
+                //var orderNumber = string.Join(&quot;. &quot;, id.ToString().ToCharArray());
+
+                var say = new XElement(&quot;Say&quot;,
+                    &quot;Hello. This is an automated call from ZEN WIRE, your consultation appointment for &quot; +
+                    appointmentDate + &quot; at &quot; + appointmentTime + appointmentAmPm + &quot; has been confirmed!&quot;);
+
+                say.Add(new XAttribute(&quot;voice&quot;, &quot;man&quot;));
+                say.Add(new XAttribute(&quot;loop&quot;, &quot;2&quot;));
+
+                response.Add(say);
+
+                var pause = new XElement(&quot;Pause&quot;);
+                pause.Add(new XAttribute(&quot;length&quot;, 1));
+
+                response.Add(pause);
+
+                say = new XElement(new XElement(&quot;Say&quot;, &quot;We look forward to seeing you! Have a great day!&quot;));
+                response.Add(say);
+
+                pause = new XElement(&quot;Pause&quot;);
+                pause.Add(new XAttribute(&quot;length&quot;, 2));
+
+                response.Add(pause);
+
+                return new ContentResult
+                {
+                    Content = response.ToString(),
+                    ContentType = &quot;text/xml&quot;
+                };
+            }
+
+            return null;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,78,1],[15,9,15,10,1],[16,13,16,54,1],[17,9,17,10,1],[20,9,20,10,1],[21,13,21,67,1],[23,13,23,37,1],[24,13,24,14,1],[25,17,25,57,1],[27,17,27,99,1],[28,17,28,88,1],[30,17,30,81,1],[32,17,32,79,1],[38,17,40,108,1],[42,17,42,57,1],[43,17,43,54,1],[45,17,45,35,1],[47,17,47,51,1],[48,17,48,56,1],[50,17,50,37,1],[52,17,52,109,1],[53,17,53,35,1],[55,17,55,47,1],[56,17,56,56,1],[58,17,58,37,1],[60,17,64,19,1],[67,13,67,25,1],[68,9,68,10,1]]);
+    </script>
+  </body>
+</html>

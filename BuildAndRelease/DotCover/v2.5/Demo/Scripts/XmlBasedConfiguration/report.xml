@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReportParams>
+  <Source>..\..\Snapshots\SampleApp.Util.Tests.dcvr</Source>
+  <Output>..\..\Reports\SampleApp.Util.Tests.html</Output>
+  <ReportType>HTML</ReportType>
+</ReportParams>

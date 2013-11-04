@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\projects\zenwire\zenwire\migrations\configuration.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Diagnostics.CodeAnalysis;
+using Zenwire.Repositories;
+using System.Data.Entity.Migrations;
+
+namespace Zenwire.Migrations
+{
+    [ExcludeFromCodeCoverage]
+    internal sealed class Configuration : DbMigrationsConfiguration&lt;ZenwireContext&gt;
+    {
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = true;
+        }
+
+        protected override void Seed(ZenwireContext context)
+        {
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet&lt;T&gt;.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data. E.g.
+            //
+            //    context.People.AddOrUpdate(
+            //      p =&gt; p.FullName,
+            //      new Person { FullName = &quot;Andrew Peters&quot; },
+            //      new Person { FullName = &quot;Brice Lambson&quot; },
+            //      new Person { FullName = &quot;Rowan Miller&quot; }
+            //    );
+            //
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,9,10,31,0],[11,9,11,10,0],[12,13,12,47,0],[13,9,13,10,0],[16,9,16,10,0],[29,9,29,10,0]]);
+    </script>
+  </body>
+</html>

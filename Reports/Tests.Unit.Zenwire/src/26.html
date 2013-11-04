@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\projects\zenwire\zenwire\services\appointmentservice.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Data.Objects;
+using System.Linq;
+using Zenwire.Domain;
+using Zenwire.Repositories;
+
+namespace Zenwire.Services
+{
+    public class AppointmentService : IAppointmentService
+    {
+        private readonly IRepository&lt;Shift&gt; _scheduleRepository;
+        private readonly IRepository&lt;Customer&gt; _customerRepository;
+        private readonly IRepository&lt;Appointment&gt; _appointmentRepository;
+        private readonly IRepository&lt;Employee&gt; _employeeRepository;
+
+        private readonly INotificationService _notificationService;
+
+        public AppointmentService(IRepository&lt;Customer&gt; customerRepository,
+            IRepository&lt;Appointment&gt; appointmentRepository,
+            IRepository&lt;Shift&gt; scheduleRepository,
+            IRepository&lt;Employee&gt; employeeRepository, INotificationService notificationService)
+        {
+            _customerRepository = customerRepository;
+            _appointmentRepository = appointmentRepository;
+            _scheduleRepository = scheduleRepository;
+            _employeeRepository = employeeRepository;
+            _notificationService = notificationService;
+        }
+
+
+        public bool Schedule(Appointment appointment)
+        {
+            //If no employees are available in the city
+            if (!IsCityAvailable(appointment))
+            {
+                if (appointment.Id &gt; 0) _appointmentRepository.Update(appointment);
+                else _appointmentRepository.AddOrUpdate(appointment);
+
+                //_notificationService.SmsConfirmation(appointment);
+
+                return true;
+            }
+
+            //If any employees are available in the city
+            if (IsAvailable(appointment))
+            {
+                if (appointment.Id &gt; 0) _appointmentRepository.Update(appointment);
+                else _appointmentRepository.AddOrUpdate(appointment);
+
+                // Do not uncomment unless in production
+                //_notificationService.VoiceConfirmation(appointment);
+                //_notificationService.SmsConfirmation(appointment);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public Appointment Get(int id)
+        {
+            Appointment appointment = _appointmentRepository.Find(id);
+            appointment.Customer = _customerRepository.Find(id);
+
+            return appointment;
+        }
+
+        public bool IsCityAvailable(Appointment appointment)
+        {
+            var city = _customerRepository.Find(appointment.CustomerId).City ?? appointment.Customer.City;
+            return _employeeRepository.Get.Count(x =&gt; x.City == city) &gt; 0;
+        }
+
+        public bool IsAvailable(Appointment appointment)
+        {
+            var appointments = _appointmentRepository.Get;
+            var shifts = _scheduleRepository.Get;
+            var city = _customerRepository.Find(appointment.CustomerId).City ?? appointment.Customer.City;
+
+            const int durationHour = 1;
+
+            var inWorkingHours = shifts
+                .Where(x =&gt;
+                    x.ShiftStart &lt;= appointment.ScheduledStart &amp;&amp;
+                    x.ShiftEnd &gt;= appointment.ScheduledEnd &amp;&amp;
+                    !appointments.Any(a =&gt;
+                        (appointment.Id == 0 || a.Id != appointment.Id) &amp;&amp;
+                        a.EmployeeId == x.EmployeeId &amp;&amp;
+                        (appointment.ScheduledStart &gt;= a.ScheduledStart &amp;&amp; appointment.ScheduledStart &lt; a.ScheduledEnd) || 
+                        (appointment.ScheduledEnd &lt;= a.ScheduledEnd &amp;&amp; appointment.ScheduledEnd &gt; a.ScheduledStart)))
+                .ToList();
+
+            if (inWorkingHours.Any())
+            {
+                var assignedEmployee = inWorkingHours.FirstOrDefault().Employee;
+                appointment.EmployeeId = assignedEmployee.Id;
+                appointment.Employee = assignedEmployee;
+                return true;
+            }
+            return false;
+        }
+
+        public IEnumerable&lt;TimeSpan&gt; GetAvailableHours(DateTime? date, int? appointmentId, int duration = 1)
+        {
+            if (date == null) return null;
+
+            var hours = new List&lt;DateTime&gt;();
+            for (var ts = new TimeSpan(); ts &lt;= new TimeSpan(23, 30, 0); ts = ts.Add(new TimeSpan(duration, 0, 0)))
+            {
+                hours.Add(date.Value + ts);
+            }
+
+            var booked = _appointmentRepository.Get
+                .Where(x =&gt;
+                    (!appointmentId.HasValue || x.Id != appointmentId))
+                .Select(x =&gt; x.ScheduledStart).ToList();
+
+            //return available hours from shifts
+            var workingHours = hours.SelectMany(h =&gt; _scheduleRepository.Get
+                .Where(x =&gt; x.ShiftStart &lt;= h &amp;&amp; x.ShiftEnd &gt;= EntityFunctions.AddHours(h, 1)), (h, s) =&gt; new {h, s})
+                .Where(t =&gt; t.s.ShiftStart &lt;= t.h &amp;&amp; t.s.ShiftEnd &gt;= t.h.AddHours(-1) &amp;&amp; booked.Count(x =&gt; x == t.h) == 0).Select(t =&gt; t.h.TimeOfDay);
+
+            //match available hours with another appointment 
+            return workingHours.Distinct();
+        }
+
+        public void AssignToEmployee(Appointment model)
+        {
+            Appointment appointment = _appointmentRepository.Find(model.Id);
+            appointment.EmployeeId = model.EmployeeId;
+            _appointmentRepository.AddOrUpdate(appointment);
+        }
+
+        public bool ChangeTime(int appointmentId, int days, int minutes, bool confirmUpdate = false)
+        {
+            Appointment appointment = _appointmentRepository.Find(appointmentId);
+            appointment.ScheduledStart = appointment.ScheduledStart.AddDays(days).AddMinutes(minutes);
+            if (confirmUpdate)
+            {
+                _appointmentRepository.AddOrUpdate(appointment);
+                return true;
+            }
+            return Schedule(appointment);
+        }
+
+        public List&lt;Appointment&gt; Get()
+        {
+            return _appointmentRepository.Get.ToList();
+        }
+
+        public void Add(Appointment appointment)
+        {
+
+            _appointmentRepository.Add(appointment);
+        }
+
+        public void Update(Appointment appointment)
+        {
+            _appointmentRepository.Update(appointment);
+        }
+
+        public void Remove(int id)
+        {
+            Appointment appointment = Get(id);
+            _appointmentRepository.Remove(appointment);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,9,22,96,1],[23,9,23,10,1],[24,13,24,54,1],[25,13,25,60,1],[26,13,26,54,1],[27,13,27,54,1],[28,13,28,56,1],[29,9,29,10,1],[33,9,33,10,1],[35,13,35,47,1],[36,13,36,14,1],[37,17,37,40,1],[37,41,37,84,1],[38,22,38,70,1],[42,17,42,29,1],[46,13,46,42,1],[47,13,47,14,1],[48,17,48,40,1],[48,41,48,84,1],[49,22,49,70,1],[55,17,55,29,1],[59,9,59,10,1],[62,9,62,10,1],[63,13,63,71,1],[64,13,64,65,1],[66,13,66,32,1],[67,9,67,10,1],[70,9,70,10,1],[71,13,71,107,1],[72,13,72,75,1],[73,9,73,10,1],[76,9,76,10,1],[77,13,77,59,1],[78,13,78,50,1],[79,13,79,107,1],[83,13,92,27,1],[94,13,94,38,1],[95,13,95,14,1],[96,17,96,81,1],[97,17,97,62,1],[98,17,98,57,1],[99,17,99,29,1],[101,13,101,26,1],[102,9,102,10,1],[105,9,105,10,1],[106,13,106,30,1],[108,13,108,46,1],[109,18,109,42,1],[110,13,110,14,1],[111,17,111,44,1],[112,13,112,14,1],[109,74,109,115,1],[109,43,109,72,1],[114,13,117,57,1],[120,13,120,54,1],[122,149,122,151,1],[125,13,125,44,1],[126,9,126,10,1],[129,9,129,10,1],[130,13,130,77,1],[131,13,131,55,1],[132,13,132,61,1],[133,9,133,10,1],[136,9,136,10,1],[137,13,137,82,1],[138,13,138,103,1],[139,13,139,31,1],[140,13,140,14,1],[141,17,141,65,1],[142,17,142,29,1],[145,9,145,10,1],[148,9,148,10,1],[149,13,149,56,1],[150,9,150,10,1],[153,9,153,10,1],[155,13,155,53,1],[156,9,156,10,1],[159,9,159,10,1],[160,13,160,56,1],[161,9,161,10,1],[164,9,164,10,1],[165,13,165,47,1],[166,13,166,56,1],[167,9,167,10,1],[58,13,58,26,0],[106,31,106,43,0],[144,13,144,42,0],[120,54,121,95,0],[121,107,121,117,0],[122,136,122,149,0],[122,29,122,108,0],[122,116,122,122,0],[122,108,122,116,0]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+<assembly name="System.Windows.Forms">
+  <member name="P:System.Windows.Forms.Cursor.Current">
+    <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+  </member>
+</assembly>

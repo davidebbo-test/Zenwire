@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assembly name="Telerik.Web.Mvc">
+  <member name="T:Telerik.Web.Mvc.GridActionAttribute">
+    <attribute ctor="M:JetBrains.Annotations.AspMvcSupressViewErrorAttribute.#ctor" />
+  </member>
+</assembly>

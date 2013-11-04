@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.Profiler.dotCover.Snapshot.Interface</name>
+    </assembly>
+    <members>
+        <member name="T:JetBrains.Profiler.Snapshot.Interface.Section.ISection">
+            <summary>
+            Common interface for all sections
+            </summary>
+        </member>
+        <member name="M:JetBrains.Profiler.Snapshot.Interface.Section.Metadata.Helpers.MetadataSectionHelpers.GetFunctionItemsLight(JetBrains.Profiler.Snapshot.Interface.Section.Metadata.IMetadataSectionAssemblyProvider,JetBrains.Profiler.Snapshot.Interface.Section.MetadataId)">
+            <summary>
+            Same as GetFunctionItems, but does not fill Parameters and ReturnValue fields
+            in the FunctionResult structure. This NULLed values are then requested separately
+            with the help of the method GetFunctionParams. This help to significantly reduce
+            total time for enumerating all functions (usually tens of thousands in average
+            snapshots), because return values and parameters do not participate neither
+            in function search nor in tabs creation, only in signature comparisons and in
+            visual representation of tree nodes (which # is tens or hundreds).
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.ActiveProcessorMask">
+            <summary>
+            Active processor mask.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.AllocationGranularity">
+            <summary>
+            Allocation granularity.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.ConfigurationXml">
+            <summary>
+            Xml string describing snapshot configuration.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.BuildDateTime">
+            <summary>
+            Core build date.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.BuildVersion">
+            <summary>
+            Core build version.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.CommandLine">
+            <summary>
+            Process command line
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.DateTime">
+            <summary>
+            Snapshot gathering time.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.MaximumApplicationAddress">
+            <summary>
+            Maximum application address.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.MinimumApplicationAddress">
+            <summary>
+            Minimum application address.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.NativeProcessorArchitecture">
+            <summary>
+            Native processor architecture.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.RuntimeName">
+            <summary>
+            CLR runtime name.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.NumberOfProcessors">
+            <summary>
+            Number of processors.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.OsName">
+            <summary>
+            Operation system full name.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.OsVersion">
+            <summary>
+            Operation system version and short name.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.PageSize">
+            <summary>
+            Page size.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.PointerSize">
+            <summary>
+            Pointer size.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.ProcessorArchitecture">
+            <summary>
+            Processor architecture.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.ProcessorLevel">
+            <summary>
+            Processor level.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.ProcessorRevision">
+            <summary>
+            Processor revision.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Profiler.Snapshot.Interface.Section.Environment.IEnvironmentSection.UserName">
+            <summary>
+            User name.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Profiler.Snapshot.Interface.Section.Metadata.IMetadataSection.ExecuteWithMetadataAssemblyProvider``2(System.Func{``1,JetBrains.Profiler.Snapshot.Interface.Section.Metadata.IMetadataSectionAssemblyProvider,``0},``1)">
+             <summary>
+             It creates instance of IMetadataSectionAssemblyProvider and run user <see cref="!:action"/> with it.
+             You can pass <see cref="!:param"/> into the <see cref="!:action"/>.
+             
+             Note: instance of IMetadataSectionAssemblyProvider will be dispoised when you leave this method.
+             So you can not store it in your <see cref="!:action"/>. Also you can not use yeild return statement in <see cref="!:action"/> for the same reason.
+            
+             If you need to store IMetadataSectionAssemblyProvider somewere, use <see cref="M:JetBrains.Profiler.Snapshot.Interface.Section.Metadata.IMetadataSection.GetMetadataAssemblyProvider(JetBrains.DataFlow.Lifetime,System.Boolean)"/> method with lifetime.
+             </summary>
+             <typeparam name="TRes">Type of result</typeparam>
+             <typeparam name="TParam">Type of param passed to user delegate</typeparam>
+             <param name="action">User delegate (see the note)</param>
+             <param name="param">This param passes to user delegate</param>
+             <returns></returns>
+        </member>
+        <member name="T:JetBrains.Profiler.Snapshot.Interface.Storage.IStorageDescriptor">
+            <summary>
+            Unified interface for describing storage which contains snapshot
+            </summary>
+        </member>
+    </members>
+</doc>

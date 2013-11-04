@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.dotCover.CoverageTree.Model</name>
+    </assembly>
+    <members>
+        <member name="P:JetBrains.dotCover.CoverageTree.Model.Interface.QuickSearchMatchingIdSet.MatchingIds">
+            <summary>
+            Ids for nodes which match quick search filter
+            </summary>
+        </member>
+        <member name="P:JetBrains.dotCover.CoverageTree.Model.Interface.QuickSearchMatchingIdSet.ParentIds">
+            <summary>
+            Ids for nodes which contain quick search matching children
+            </summary>
+        </member>
+        <member name="T:JetBrains.dotCover.CoverageTree.Model.Interface.ITransientCoverageTree">
+            <summary>
+            Transient raw metadata-based coverage tree without additional processing of type members.
+            Constructed on demand, each time from the scratch.
+            </summary>
+        </member>
+        <member name="M:JetBrains.dotCover.CoverageTree.Model.Interface.Nodes.CoverageNodeKind.GetCoverageNodeKindIdByName(System.String)">
+            <summary>
+            Calculates coverage node kind's id as the hash code of its name. 
+            We can't use standard String.GetHashCode because its result is platform-dependent and differs on the 32-bit and 64-bit versions of the .NET Framework.
+            </summary>
+        </member>
+        <member name="T:JetBrains.dotCover.CoverageTree.Model.GroupFilter">
+            <summary>
+            Available group filters are obtained from snapshot
+            </summary>
+        </member>
+    </members>
+</doc>

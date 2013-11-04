@@ -1,0 +1,55 @@
+﻿@model ShiftModel
+
+@Styles.Render("~/Content/fullcalendar")
+@Html.Partial("_LayoutPartial")
+
+<div class="container">
+    <div class="form-horizontal">
+        @using (Html.BeginForm())
+        {
+ @Html.AntiForgeryToken()
+ @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Shift</legend>
+
+                <!-- shift start input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">Start</label>
+                    <div class="controls ">
+                        <div class="input-append bootstrap-timepicker">
+                            @Html.TextBox("ShiftEntity.ShiftStart", string.Format("{0:MM/dd/yyyy HH:mm}", DateTime.Now), new { @class = "datetimepicker" })
+                            <span class="add-on"><i class="icon-time"></i></span>
+                            @Html.ValidationMessageFor(m => m.ShiftEntity.ShiftStart)
+                        </div>
+                    </div>
+                </div>
+                <!-- shift end input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">End</label>
+                    <div class="controls ">
+                        <div class="input-append bootstrap-timepicker">
+                            @Html.TextBox("ShiftEntity.ShiftEnd", string.Format("{0:MM/dd/yyyy HH:mm}", DateTime.Now), new { @class = "datetimepicker" })
+                            <span class="add-on"><i class="icon-time"></i></span>
+                            @Html.ValidationMessageFor(m => m.ShiftEntity.ShiftEnd)
+                        </div>
+                    </div>
+                </div>
+                <!-- employee input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">Employee</label>
+                    <div class="controls">
+                        @Html.DropDownListFor(m => m.ShiftEntity.EmployeeId, new SelectList(Model.EmployeeList.ToList(), "Id", "Fullname"), new { @class = "select2-select-00 span12" })
+                        @Html.ValidationMessageFor(m => m.ShiftEntity.EmployeeId)
+                        @Html.ActionLink("Add New", "Create", "Employee", new { @class = "btn btn-primary btn-xs"})
+                    </div>
+                </div>
+                <div class="control-group col-lg-6">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    @Html.ActionLink("Cancel", "Index", new { @class = "btn btn-default" })
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+@Scripts.Render("~/bundles/fullcalendar")

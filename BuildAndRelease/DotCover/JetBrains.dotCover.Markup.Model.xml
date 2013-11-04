@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.dotCover.Markup.Model</name>
+    </assembly>
+    <members>
+        <member name="M:JetBrains.dotCover.Markup.Model.Interface.IFileNameMapper.MapFileName(System.String)">
+            <summary>
+            Performs file name mapping
+            </summary>
+            <param name="fileName">local file name (as specified in solution)</param>
+            <returns>resulting file name (file name in the environment where snapshot has been taken) or null if mapping can't be performed</returns>
+        </member>
+        <member name="P:JetBrains.dotCover.Markup.Model.Interface.IFileNameMapper.Priority">
+            <summary>
+            All available mappers are organized into queue and ordered by priority.
+            </summary>
+        </member>
+        <member name="M:JetBrains.dotCover.Markup.Model.Interface.IFileNameMapperFactory.CreateMapper(JetBrains.Profiler.Snapshot.Interface.Storage.IStorageDescriptor,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates mapper for the snapshot specified by storage descriptor 
+            </summary>
+            <param name="snapshotStorageDescriptor">snapshot storage descriptor</param>
+            <param name="fileNamesDefinedInSnapshot">list of all files defined in snapshot</param>
+            <returns>file name mapper or null if factory can't provide mapper for the specified snapshot</returns>
+        </member>
+        <member name="T:JetBrains.dotCover.Markup.Model.StatementRangeSplitter">
+            <summary>
+            Splits statement ranges in source file to make them disjunct
+            </summary>
+        </member>
+        <member name="M:JetBrains.dotCover.Markup.Model.StatementRangeSplitter.EnsureFileIndexProcessed(System.Int32)">
+            <summary>
+            Processes all statement ranges in source file
+            </summary>
+            <param name="fileNameIndex">Filename index in source snapshot</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,44 @@
+﻿@model AppointmentModel
+@Html.Partial("_LayoutPartial")
+<div class="container">
+    <div class="form-horizontal">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true) 
+            <fieldset>
+                <legend>Appointment Routing</legend>
+                @Html.HiddenFor(model => model.Appointment.Id)
+
+                <!-- customer -->
+                <div class="control-group col-lg-6">
+                    <label class="control-label"></label>
+                    <div class="controls ">
+                        <b>@Html.DisplayFor(model => model.Appointment.Customer.Fullname)</b><br/>
+                        @Html.DisplayFor(model => model.Appointment.Customer.Address)<br/>
+                        @Html.DisplayFor(model => model.Appointment.Customer.City)<br/>
+                    </div>
+                </div>
+                <!-- appointment -->
+                <div class="control-group col-lg-6">
+                    <label class="control-label"><b>Scheduled</b></label>
+                    <div class="controls ">
+                        @Html.Display("Appointment.ScheduledStart", Model.Appointment.ScheduledStart != null ? Model.Appointment.ScheduledStart.ToString("dd/M/yyyy HH:mm") : "", new { })
+                    </div>
+                </div>
+                <!-- employee -->
+                <div class="control-group col-lg-6">
+                    <label class="control-label"><b>Employee</b></label>
+                    <div class="controls ">
+                        @Html.DropDownListFor(model => model.Appointment.EmployeeId, new SelectList(Model.Employees.ToList(), "Id", "Fullname"), "")
+                        @Html.ValidationMessageFor(model => model.Appointment.EmployeeId)
+                    </div>
+                </div>
+                <div class="control-group col-lg-6">
+                    <input type="submit" value="Assign" class="btn btn-primary" />
+                    @Html.ActionLink("Cancel", "Index", new { @class = "btn" })
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>

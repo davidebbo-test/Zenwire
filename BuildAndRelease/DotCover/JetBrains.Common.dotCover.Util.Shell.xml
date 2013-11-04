@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.Common.dotCover.Util.Shell</name>
+    </assembly>
+    <members>
+        <member name="M:JetBrains.Common.Util.Icons.ThemedIconManagerExtensions.GetRasterizedIcon(JetBrains.UI.Icons.IThemedIconManager,JetBrains.UI.Icons.IconId)">
+            <summary>
+            Workaround to avoid pngs' distortion (CurrentGdiBitmap96 doesn't work well in all cases) //TODO: revisit
+            </summary>
+        </member>
+    </members>
+</doc>

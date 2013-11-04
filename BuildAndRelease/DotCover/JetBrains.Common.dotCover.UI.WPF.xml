@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.Common.dotCover.UI.WPF</name>
+    </assembly>
+    <members>
+        <member name="T:JetBrains.Common.UI.WPF.BindableRun">
+            <summary>
+            A subclass of the Run element that exposes a DependencyProperty property
+            to allow data binding.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Common.UI.WPF.Commands.CommandSinkBinding">
+            <summary>
+            A CommandBinding subclass that will attach its
+            CanExecute and Executed events to the event handling
+            methods on the object referenced by its CommandSink property.  
+            Set the attached CommandSink property on the element 
+            whose CommandBindings collection contain CommandSinkBindings.
+            If you dynamically create an instance of this class and add it 
+            to the CommandBindings of an element, you must explicitly set
+            its CommandSink property.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Common.UI.WPF.Commands.CommandSinkBinding.CommonElement">
+            <summary>
+            This class makes it easier to write code that works 
+            with the common members of both the FrameworkElement
+            and FrameworkContentElement classes.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Common.UI.WPF.src.Controls.LoadingAnimation">
+            <summary>
+            Interaction logic for LoadingAnimation.xaml
+            </summary>
+            <summary>
+            LoadingAnimation
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.src.Controls.LoadingAnimation.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker">
+            <summary>
+            Tracks changes of binding values for collection of objects. Consists of two collections: collection of source object and collection of property bindings to evaluate. 
+            Items are registered by <see cref="M:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.StartTracking(System.Object)"/>/<see cref="M:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.StopTracking(System.Object)"/> methods.
+            PRoperties are registered by <see cref="M:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.RegisterPropertyBinding(System.Windows.DependencyProperty,System.Windows.Data.BindingBase)"/>/<see cref="M:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.UnregisterAllPropertyBindings"/> methods.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.Clear">
+            <summary>
+            Removes all items and bindings
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.StartTracking(System.Object)">
+            <summary>
+            Registers item for tracking changes in bindings. <see cref="E:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.ItemPropertyChanged"/> event is not fired.
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.StopTracking(System.Object)">
+            <summary>
+            Unregisters item
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.GetValue``1(System.Object,System.Windows.DependencyProperty)">
+            <summary>
+            Evaluates current value of item's property
+            </summary>
+            <typeparam name="T">Type of the return value</typeparam>
+            <param name="item">Source item. If that item is not registered, value must be evaluated anyway</param>
+            <param name="property">Registered dependency property which value is to be evaluated</param>
+            <returns>Value of the property of the source item. If binding for that property is not registered, returns default value.</returns>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.RegisterPropertyBinding(System.Windows.DependencyProperty,System.Windows.Data.BindingBase)">
+            <summary>
+            Registers binding for dependency property. <see cref="E:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.ItemPropertyChanged"/> event is not fired.
+            </summary>
+            <param name="property"></param>
+            <param name="binding"></param>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.UnregisterAllPropertyBindings">
+            <summary>
+            Clears all dependency property bindings
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.BindProperty(System.Windows.DependencyObject,System.Windows.DependencyProperty,System.Object)">
+            <summary>
+            Sets transparent binding at the <param name="property">property</param> of the <param name="target">target object</param> with a registered <param name="sourceItem">source item</param>
+            </summary>
+            <param name="target">Dependency Object for which to set binding</param>
+            <param name="property">Dependency Property of the target object. Not necessary to be registered</param>
+            <param name="sourceItem">Registered source item</param>
+            <returns>True if source item had been registered or false otherwise.</returns>
+        </member>
+        <member name="E:JetBrains.Common.UI.WPF.Controls.IItemBindingsTracker.ItemPropertyChanged">
+            <summary>
+            Fires when a value of property for some of the registered items changes. Does not fire when item or dependency property is just registered.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Common.UI.WPF.Interactivity.ExecuteCommand.CommandParameter">
+            <summary>
+            CommandParameter and CommandParameterBinding are mutually exclusive
+            </summary>
+        </member>
+        <member name="P:JetBrains.Common.UI.WPF.Interactivity.ExecuteCommand.CommandParameterBinding">
+            <summary>
+            CommandParameter and CommandParameterBinding are mutually exclusive
+            </summary>
+        </member>
+        <member name="T:JetBrains.Common.UI.WPF.Interactivity.IListItemConverter">
+            <summary>
+            Converts items in the Master list to Items in the target list, and back again.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.IListItemConverter.Convert(System.Object)">
+            <summary>
+            Converts the specified master list item.
+            </summary>
+            <param name="masterListItem">The master list item.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.IListItemConverter.ConvertBack(System.Object)">
+            <summary>
+            Converts the specified target list item.
+            </summary>
+            <param name="targetListItem">The target list item.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.MultiSelection.GetSelectedItems(System.Windows.DependencyObject)">
+            <summary>
+            Gets the synchronized selected items.
+            </summary>
+            <param name="dependencyObject">The dependency object.</param>
+            <returns>The list that is acting as the sync list.</returns>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.MultiSelection.SetSelectedItems(System.Windows.DependencyObject,System.Collections.IList)">
+            <summary>
+            Sets the synchronized selected items.
+            </summary>
+            <param name="dependencyObject">The dependency object.</param>
+            <param name="value">The value to be set as synchronized items.</param>
+        </member>
+        <member name="T:JetBrains.Common.UI.WPF.Interactivity.MultiSelection.SynchronizationManager">
+            <summary>
+            A synchronization manager.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.MultiSelection.SynchronizationManager.#ctor(System.Windows.Controls.Primitives.Selector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:JetBrains.Common.UI.WPF.Interactivity.MultiSelection.SynchronizationManager"/> class.
+            </summary>
+            <param name="selector">The selector.</param>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.MultiSelection.SynchronizationManager.StartSynchronizingList">
+            <summary>
+            Starts synchronizing the list.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.MultiSelection.SynchronizationManager.StopSynchronizing">
+            <summary>
+            Stops synchronizing the list.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Common.UI.WPF.Interactivity.ViewModelRequestBehavior">
+            <summary>
+            This behavior is used to handle requests of viewmodel -> view direction.
+            Set ViewModelRequest to a property of viewmodel of some delegate type.
+            Set delegate which will be set to viewmodel to Respond property.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.TwoListSynchronizer.#ctor(System.Collections.IList,System.Collections.IList)">
+            <summary>
+            Initializes a new instance of the <see cref="T:JetBrains.Common.UI.WPF.Interactivity.TwoListSynchronizer"/> class.
+            </summary>
+            <param name="masterList">The master list.</param>
+            <param name="targetList">The target list.</param>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.TwoListSynchronizer.StartSynchronizing">
+            <summary>
+            Starts synchronizing the lists.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.TwoListSynchronizer.StopSynchronizing">
+            <summary>
+            Stop synchronizing the lists.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.TwoListSynchronizer.ReceiveWeakEvent(System.Type,System.Object,System.EventArgs)">
+            <summary>
+            Receives events from the centralized event manager.
+            </summary>
+            <param name="managerType">The type of the <see cref="T:System.Windows.WeakEventManager"/> calling this method.</param>
+            <param name="sender">Object that originated the event.</param>
+            <param name="e">Event data.</param>
+            <returns>
+            true if the listener handled the event. It is considered an error by the <see cref="T:System.Windows.WeakEventManager"/> handling in WPF to register a listener for an event that the listener does not handle. Regardless, the method should return false if it receives an event that it does not recognize or handle.
+            </returns>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.TwoListSynchronizer.ListenForChangeEvents(System.Collections.IList)">
+            <summary>
+            Listens for change events on a list.
+            </summary>
+            <param name="list">The list to listen to.</param>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.TwoListSynchronizer.StopListeningForChangeEvents(System.Collections.IList)">
+            <summary>
+            Stops listening for change events.
+            </summary>
+            <param name="list">The list to stop listening to.</param>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.Interactivity.TwoListSynchronizer.UpdateListsFromSource(System.Collections.IList)">
+            <summary>
+            Makes sure that all synchronized lists have the same values as the source list.
+            </summary>
+            <param name="sourceList">The source list.</param>
+        </member>
+        <member name="T:JetBrains.Common.UI.WPF.themes.c__workspace_dotmemory4_dotcommon_src_ui_wpf_themes_treeviewlist_xaml">
+            <summary>
+            c__workspace_dotmemory4_dotcommon_src_ui_wpf_themes_treeviewlist_xaml
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.UI.WPF.themes.c__workspace_dotmemory4_dotcommon_src_ui_wpf_themes_treeviewlist_xaml.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

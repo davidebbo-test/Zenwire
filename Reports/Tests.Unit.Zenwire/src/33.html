@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\projects\zenwire\zenwire\models\appointmentmodel.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Zenwire.Domain;
+
+namespace Zenwire.Models
+{
+    public class AppointmentModel
+    {
+        public string Status { get; set; }
+        public Appointment Appointment { get; set; }
+        public TimeSpan AppointmentTime { get; set; }
+        public List&lt;Customer&gt; Customers { get; set; }
+        public List&lt;Employee&gt; Employees { get; set; }
+        public IQueryable&lt;Shift&gt; Shift { get; set; }
+
+        public AppointmentModel(Appointment appointment)
+        {
+            Appointment = appointment; 
+        }
+
+        public AppointmentModel()
+        {
+            
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[17,9,17,57,1],[18,9,18,10,1],[19,13,19,39,1],[20,9,20,10,1],[22,9,22,34,1],[23,9,23,10,1],[25,9,25,10,1]]);
+    </script>
+  </body>
+</html>

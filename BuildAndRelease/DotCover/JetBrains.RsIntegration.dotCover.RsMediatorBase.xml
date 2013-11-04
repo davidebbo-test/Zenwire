@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.RsIntegration.dotCover.RsMediatorBase</name>
+    </assembly>
+    <members>
+        <member name="M:JetBrains.RsIntegration.RsMediatorBase.IProductFacade.ExecutionItemGroupReadyToStart(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Called once per each item group. 
+            </summary>
+            <param name="sessionId">Session id</param>
+            <param name="executionItemGroupId">Id of item group to execute. All group items are executed with the same configuration.</param>
+            <param name="executionItemIds">Collection of item ids. These ids will be passed to <see cref="M:JetBrains.RsIntegration.RsMediatorBase.IProductFacade.ExecuteItem(System.String,System.String,System.String[],System.String,JetBrains.RsIntegration.RsMediatorBase.TheAction)"/> for each execution item. 
+            Execution item describes an executable file and its command line arguments</param>
+            <param name="unitTestRunnerFacadeId">unit test runner facade id</param>
+        </member>
+        <member name="M:JetBrains.RsIntegration.RsMediatorBase.IProductFacade.ExecuteItem(System.String,System.String,System.String[],System.String,JetBrains.RsIntegration.RsMediatorBase.TheAction)">
+            <summary>
+            Starts analysis of the given executable
+            </summary>
+            <param name="executionItemId">Execution item id</param>
+            <param name="executable">Path to the executable file</param>
+            <param name="arguments">Command line arguments</param>
+            <param name="workingDirectory">Working directory</param>
+            <param name="stopRun">Callback for handling end of the item execution on the ReSharper side</param>
+        </member>
+        <member name="M:JetBrains.RsIntegration.RsMediatorBase.IProductFacade.ExecuteMetroItem(System.String,System.String,JetBrains.RsIntegration.RsMediatorBase.TheAction,JetBrains.RsIntegration.RsMediatorBase.TheAction,JetBrains.RsIntegration.RsMediatorBase.TheAction)">
+            <summary>
+            Starts analysis of the given Metro application
+            </summary>
+            <param name="executionItemId">Execution item id</param>
+            <param name="packageFullName">Target package full name</param>
+            <param name="handleAnalysisStarted">Callback for performing custom actions on the TestRunner side after execution is complete on the dotCover side</param>
+            <param name="stopRun">Callback for handling end of the item execution on the ReSharper side</param>
+        </member>
+    </members>
+</doc>

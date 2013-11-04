@@ -1,0 +1,42 @@
+﻿@model Shift
+
+@Html.Partial("_LayoutPartial")
+<div class="container">
+
+    <h3>Are you sure you want to delete this?</h3>
+    <fieldset>
+        <legend>Shift</legend>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.ShiftStart)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ShiftStart)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.ShiftEnd)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ShiftEnd)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.EmployeeId)
+        </div>
+    </fieldset>
+    @using (Html.BeginForm())
+    {
+ @Html.AntiForgeryToken()
+
+        <p>
+            <input type="submit" value="Delete" />
+            |
+       
+            @Html.ActionLink("Cancel", "Index")
+        </p>
+    }
+</div>

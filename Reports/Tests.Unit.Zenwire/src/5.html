@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\projects\zenwire\zenwire\app_start\ninjectwebcommon.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Diagnostics.CodeAnalysis;
+using Zenwire.Gateways;
+
+[assembly: WebActivator.PreApplicationStartMethod(typeof(Zenwire.App_Start.NinjectWebCommon), &quot;Start&quot;)]
+[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(Zenwire.App_Start.NinjectWebCommon), &quot;Stop&quot;)]
+
+namespace Zenwire.App_Start
+{
+    using System;
+    using System.Web;
+
+    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+
+    using Ninject;
+    using Ninject.Web.Common;
+    using System.Reflection;
+    using System.Web.Mvc;
+    using Zenwire.Controllers;
+    using Zenwire.Services;
+    using Zenwire.Repositories;
+    using Zenwire.Domain;
+    using Ninject.Web.Mvc;
+    using Zenwire.Models;
+
+    [ExcludeFromCodeCoverage]
+    public static class NinjectWebCommon
+    {
+        private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+
+        /// &lt;summary&gt;
+        /// Starts the application
+        /// &lt;/summary&gt;
+        public static void Start()
+        {
+            DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
+            DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
+            bootstrapper.Initialize(CreateKernel);
+        }
+
+        /// &lt;summary&gt;
+        /// Stops the application.
+        /// &lt;/summary&gt;
+        public static void Stop()
+        {
+            bootstrapper.ShutDown();
+        }
+
+        /// &lt;summary&gt;
+        /// Creates the kernel that will manage your application.
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;The created kernel.&lt;/returns&gt;
+        private static IKernel CreateKernel()
+        {
+            var kernel = new StandardKernel();
+            kernel.Bind&lt;Func&lt;IKernel&gt;&gt;().ToMethod(ctx =&gt; () =&gt; new Bootstrapper().Kernel);
+            kernel.Bind&lt;IHttpModule&gt;().To&lt;HttpApplicationInitializationHttpModule&gt;();
+
+            RegisterServices(kernel);
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+            return kernel;
+        }
+
+        /// &lt;summary&gt;
+        /// Load your modules or register your services here!
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;kernel&quot;&gt;The kernel.&lt;/param&gt;
+        private static void RegisterServices(IKernel kernel)
+        {
+            kernel.Bind&lt;ZenwireContext&gt;().ToSelf().InRequestScope();
+
+            #region Controllers
+            kernel.Bind&lt;IController&gt;().To&lt;AppointmentController&gt;();
+            kernel.Bind&lt;IController&gt;().To&lt;ShiftController&gt;();
+            kernel.Bind&lt;IController&gt;().To&lt;CustomerController&gt;();
+            kernel.Bind&lt;IController&gt;().To&lt;AccountController&gt;();
+            kernel.Bind&lt;IController&gt;().To&lt;NotificationController&gt;();
+            kernel.Bind&lt;IController&gt;().To&lt;ProductController&gt;();
+            kernel.Bind&lt;IController&gt;().To&lt;ReferralController&gt;();
+            #endregion
+
+            #region Services
+            kernel.Bind&lt;IAppointmentService&gt;().To&lt;AppointmentService&gt;();
+            kernel.Bind&lt;IReferralService&gt;().To&lt;ReferralService&gt;();
+            kernel.Bind&lt;ICustomerService&gt;().To&lt;CustomerService&gt;();
+            kernel.Bind&lt;IEmployeeService&gt;().To&lt;EmployeeService&gt;();
+            kernel.Bind&lt;IShiftService&gt;().To&lt;ShiftService&gt;();
+            kernel.Bind&lt;IProductService&gt;().To&lt;ProductService&gt;();
+            kernel.Bind&lt;INotificationService&gt;().To&lt;NotificationService&gt;();
+            #endregion
+
+            #region Repositories
+            kernel.Bind(typeof(IRepository&lt;&gt;)).To(typeof(Repository&lt;&gt;));
+            kernel.Bind&lt;IRepository&lt;Employee&gt;&gt;().To&lt;Repository&lt;Employee&gt;&gt;();
+            kernel.Bind&lt;IRepository&lt;Shift&gt;&gt;().To&lt;Repository&lt;Shift&gt;&gt;();
+            #endregion
+
+            #region Gateways
+            kernel.Bind&lt;INotificationGateway&gt;().To&lt;NotificationGateway&gt;();
+            #endregion
+
+            #region Models
+            kernel.Bind&lt;ShiftModel&gt;().ToSelf().InRequestScope();
+            kernel.Bind&lt;ReferralModel&gt;().ToSelf().InRequestScope(); 
+            #endregion
+
+            //kernel.Bind&lt;ZenwireContext&gt;().ToConstructor(_ =&gt; new ZenwireContext());
+            //kernel.Bind&lt;IZenwireContext&gt;().To&lt;ZenwireContext&gt;();
+            kernel.Load(Assembly.GetExecutingAssembly());
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[34,9,34,10,0],[35,13,35,82,0],[36,13,36,76,0],[37,13,37,51,0],[38,9,38,10,0],[44,9,44,10,0],[45,13,45,37,0],[46,9,46,10,0],[53,9,53,10,0],[54,13,54,47,0],[55,13,55,58,0],[55,89,55,91,0],[56,13,56,86,0],[58,13,58,38,0],[59,13,59,83,0],[60,13,60,27,0],[61,9,61,10,0],[68,9,68,10,0],[69,13,69,69,0],[72,13,72,68,0],[73,13,73,62,0],[74,13,74,65,0],[75,13,75,64,0],[76,13,76,69,0],[77,13,77,64,0],[78,13,78,65,0],[82,13,82,73,0],[83,13,83,67,0],[84,13,84,67,0],[85,13,85,67,0],[86,13,86,61,0],[87,13,87,65,0],[88,13,88,75,0],[92,13,92,73,0],[93,13,93,77,0],[94,13,94,71,0],[98,13,98,75,0],[102,13,102,65,0],[103,13,103,68,0],[108,13,108,58,0],[109,9,109,10,0],[55,58,55,64,0],[55,64,55,89,0],[28,9,28,80,0]]);
+    </script>
+  </body>
+</html>

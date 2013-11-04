@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MergeParams>
+  <Source>..\..\Snapshots\SampleApp.Util.Tests.dcvr</Source>
+  <Source>..\..\Snapshots\SampleApp.Data.Tests.dcvr</Source>
+  <Output>..\..\Snapshots\SampleApp.Tests.Merged.dcvr</Output>
+</MergeParams>

@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.Common.dotCover.Util.ViewModel</name>
+    </assembly>
+    <members>
+        <member name="T:JetBrains.Common.Util.ViewModel.Commands.ICommandSink">
+            <summary>
+            Represents an object that is capable of being notified of 
+            a routed command execution by a CommandSinkBinding.  This
+            interface is intended to be implemented by a ViewModel class
+            that honors a set of routed commands.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.Util.ViewModel.Commands.ICommandSink.CanExecuteCommand(System.Windows.Input.ICommand,System.Object,System.Boolean@)">
+            <summary>
+            Returns true if the specified command can be executed by the command sink.
+            </summary>
+            <param name="command">
+            The command whose execution status is being queried.
+            </param>
+            <param name="parameter">
+            An optional command parameter.
+            </param>
+            <param name="handled">
+            Set to true if there is no need to continue querying for an execution status.
+            </param>
+        </member>
+        <member name="M:JetBrains.Common.Util.ViewModel.Commands.ICommandSink.ExecuteCommand(System.Windows.Input.ICommand,System.Object,System.Boolean@)">
+            <summary>
+            Executes the specified command.
+            </summary>
+            <param name="command">
+            The command being executed.
+            </param>
+            <param name="parameter">
+            An optional command parameter.
+            </param>
+            <param name="handled">
+            Set to true if the command has been executed and there is no need for others to respond.
+            </param>
+        </member>
+        <member name="T:JetBrains.Common.Util.ViewModel.Commands.CommandSink">
+            <summary>
+            This implementation of ICommandSink can serve as a base
+            class for a ViewModel or as an object embedded in a ViewModel.  
+            It provides a means of registering commands and their callback 
+            methods, and will invoke those callbacks upon request.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Common.Util.ViewModel.NotifyCollectionChangedCaster`2">
+            <summary>
+            This class is useful if you use some implementation of INotifyCollectionChanged like an <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/>
+            and should expose <see cref="T:System.Collections.Generic.IEnumerable`1"/> where D inherits B. You cannot use IEnumerable.Cast" extension method because
+            it returns an object of class does not inherit <see cref="T:System.Collections.Specialized.INotifyCollectionChanged"/> and does not linked with source collection.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IPlainTreeItemCollection">
+            <summary>
+            Represents tree structure as a plain list:
+            
+            Index  Item
+            -----------------
+            0     Grandparent
+            1       Parent1
+            2         Child1
+            3         Child2
+            4       Parent2
+            5         Child3
+            6       Parent3
+            ...
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IPlainTreeItemCollection.IsExpanded(System.Object)">
+            <summary>
+            Returns expand state of the item inside the collection. Returns true if item's children are presented in the list.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IPlainTreeItemCollection.Collapse(System.Object)">
+            <summary>
+            Removes all descendants of the item from the list
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IPlainTreeItemCollection.Expand(System.Object)">
+            <summary>
+            Inserts children of the item into the list and recursively expands children if needed. Uses <see cref="P:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IPlainTreeItemCollection.TreeStructureProvider"/> to obtain item's expand state and children.
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IPlainTreeItemCollection.VerifyChildren(System.Object)">
+            <summary>
+            Compares item's children provided by <see cref="P:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IPlainTreeItemCollection.TreeStructureProvider"/> with children currently presented in the list
+            </summary>
+            <param name="item"></param>
+            <returns>True if children sequences are equal</returns>
+        </member>
+        <member name="M:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IPlainTreeItemCollection.GetParent(System.Object)">
+            <summary>
+            Returns parent of the item that is presented in the list
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IPlainTreeItemCollection.Reload">
+            <summary>
+            Reloads the collection, expanding nodes if necessary.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IPlainTreeItemCollection.Source">
+            <summary>
+            Top-level collection of items
+            </summary>
+        </member>
+        <member name="P:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IPlainTreeItemCollection.TreeStructureProvider">
+            <summary>
+            Used to obtain children and expand state of the items
+            </summary>
+        </member>
+        <member name="T:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IRefreshScheduler">
+            <summary>
+            This interface is used to accumulate several refresh (update) requests into one.
+            Currently is used by <see cref="T:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.PlainTreeItemCollection"/> to accumulate CollectionChanged events from <see cref="P:JetBrains.Common.Util.ViewModel.PlainTreeCollecion.IPlainTreeItemCollection.Source"/> and reload collection only once.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.Util.ViewModel.Sorting.Sorter`2.AddSortKey``1(`0,System.Func{`1,``0},System.ComponentModel.ListSortDirection)">
+            <remarks>
+            Be careful, may affect performance
+            </remarks>
+        </member>
+        <member name="T:JetBrains.Common.Util.ViewModel.ListChangingNotifier`1">
+            <summary>
+            This class is made for raising <see cref="E:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged"/> event manualy. 
+            It is needed for sorting collection bound to TreeList control or some other changing of the collection.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Common.Util.ViewModel.WritableBitmapExtensions.SetPixel(System.Windows.Media.Imaging.WriteableBitmap,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets the pixel color into 32bit bitmap.
+            Bitmap must be locked before this operation
+            </summary>
+            <param name="bitmap"></param>
+            <param name="row"></param>
+            <param name="column"></param>
+            <param name="color"></param>
+        </member>
+    </members>
+</doc>

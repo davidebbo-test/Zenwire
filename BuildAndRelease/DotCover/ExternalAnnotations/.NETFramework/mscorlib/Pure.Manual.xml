@@ -1,0 +1,67 @@
+<assembly name="mscorlib">
+
+  <member name="M:System.Threading.CancellationToken.ThrowIfCancellationRequested">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.Threading.CancellationToken.ThrowIfSourceDisposed">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  
+  <member name="M:System.DateTimeOffset.ToOffset(System.TimeSpan)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.Add(System.TimeSpan)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.AddDays(System.Double)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.AddHours(System.Double)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.AddMilliseconds(System.Double)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.AddMinutes(System.Double)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.AddMonths(System.Int32)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.AddSeconds(System.Double)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.AddTicks(System.Int64)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.AddYears(System.Int32)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.EqualsExact(System.DateTimeOffset)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.Subtract(System.DateTimeOffset)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.Subtract(System.TimeSpan)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.ToFileTime">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.ToLocalTime">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.ToString(System.String)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.ToString(System.IFormatProvider)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:System.DateTimeOffset.ToUniversalTime">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+
+
+
+</assembly>

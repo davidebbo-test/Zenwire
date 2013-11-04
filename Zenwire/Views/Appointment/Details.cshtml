@@ -1,0 +1,43 @@
+﻿@model Appointment
+@Html.Partial("_LayoutPartial")
+<div class="container">
+    <div class="form-horizontal">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true) 
+            <fieldset>
+                <legend>Appointment Details</legend>
+                @Html.HiddenFor(model => model.Id)
+
+                <!-- customer -->
+                <div class="control-group col-lg-6">
+                    <label class="control-label"></label>
+                    <div class="controls ">
+                        <b>@Html.DisplayFor(model => model.Customer.Fullname)</b><br />
+                        @Html.DisplayFor(model => model.Customer.Address)<br />
+                        @Html.DisplayFor(model => model.Customer.City)<br />
+                    </div>
+                </div>
+                <!-- appointment -->
+                <div class="control-group col-lg-6">
+                    <label class="control-label"><b>Scheduled</b></label>
+                    <div class="controls ">
+                        @Html.DisplayFor(model => model.ScheduledStart)
+                    </div>
+                </div>
+                <!-- employee -->
+                <div class="control-group col-lg-6">
+                    <label class="control-label"><b>Assigned</b></label>
+                    <div class="controls ">
+                        @Html.DisplayFor(model => model.Employee.Fullname)
+                    </div>
+                </div>
+                <div class="control-group col-lg-6">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary"})
+                    @Html.ActionLink("Cancel", "Index", new { @class = "btn btn-default"})
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>

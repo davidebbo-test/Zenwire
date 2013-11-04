@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>dotCover</name>
+    </assembly>
+    <members>
+        <member name="T:JetBrains.dotCover.ConsoleRunner.Util.TempFolderUtil">
+            <summary>
+            Ensures that temp folder exists and has write permissions
+            </summary>
+        </member>
+        <member name="M:JetBrains.dotCover.ConsoleRunner.Util.TempFolderUtil.EnsureTempFolderAvailable">
+            <exception cref="T:JetBrains.dotCover.ConsoleRunner.CommandExecutionException"/>
+        </member>
+    </members>
+</doc>

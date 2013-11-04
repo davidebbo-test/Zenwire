@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/scripts")
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Raleway:200,400'>
+    @RenderSection("head", false)
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset='61'>
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!--start navigation-->
+    <div class="navbar navbar-fixed-top" role="navigation">
+        <div class="container" data-start="padding: 15px 0px;" data-200="padding: 0px 0px;">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#home" class="navbar-brand">
+                <img class="img-responsive" src="~/Images/zenwire-logo.png" alt=""></a>
+            <div class="nav-collapse collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li>@Html.ActionLink("Schedule", "Schedule", "Appointment")</li>
+                    @*<li><a href="#fourth">Blog</a></li>*@
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div style="padding-top: 100px">
+        @RenderBody()
+    </div>
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 margin copy">
+                    <p>2013 &copy; Zenwire - Professional Services</p>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-offset-2 margin social">
+                    <a class="facebook" href="http://www.facebook.com/zenwireinc" target="_blank">Facebook</a> / 
+                    <a class="twitter" href="http://www.twitter.com/zenwire" target="_blank">Twitter</a> / 
+                    <a class="google" href="" target="_blank">Google+</a> / 
+                    <a class="instagram" href="" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <a href="#home" class="hidden-sm go-top" data-0="opacity: 0;" data-1000="opacity: 1;">Go Top</a>
+    <script type="text/javascript">
+        var unavailableSource = "@Url.Action("GetAvailableHours", "Appointment")";
+        var eventSource = "@Url.Action("GetEvents", "Appointment")";
+        var editLink = "@Url.Action("Edit", "Appointment")";
+        var assignLink = "@Url.Action("Assign", "Appointment")";
+    </script>
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/syndicate")
+    @Scripts.Render("~/bundles/guideline")
+</body>
+</html>

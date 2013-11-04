@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Generated on System.Web.WebPages, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35 -->
+<assembly name="System.Web.WebPages, Version=2.1.0.0">
+  <member name="M:System.Web.Helpers.AntiForgery.GetHtml(System.Web.HttpContextBase,System.String,System.String,System.String)">
+    <parameter name="path">
+      <attribute ctor="M:JetBrains.Annotations.LocalizationRequiredAttribute.#ctor(System.Boolean)">
+        <argument>false</argument>
+      </attribute>
+      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:System.Web.WebPages.HelperPage.Href(System.String,System.Object[])">
+    <parameter name="path">
+      <attribute ctor="M:JetBrains.Annotations.LocalizationRequiredAttribute.#ctor(System.Boolean)">
+        <argument>false</argument>
+      </attribute>
+      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:System.Web.WebPages.StartPage.RenderPage(System.String,System.Object[])">
+    <parameter name="path">
+      <attribute ctor="M:JetBrains.Annotations.LocalizationRequiredAttribute.#ctor(System.Boolean)">
+        <argument>false</argument>
+      </attribute>
+      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:System.Web.WebPages.WebPage.RenderPage(System.String,System.Object[])">
+    <parameter name="path">
+      <attribute ctor="M:JetBrains.Annotations.LocalizationRequiredAttribute.#ctor(System.Boolean)">
+        <argument>false</argument>
+      </attribute>
+      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:System.Web.WebPages.WebPageBase.RenderPage(System.String,System.Object[])">
+    <parameter name="path">
+      <attribute ctor="M:JetBrains.Annotations.LocalizationRequiredAttribute.#ctor(System.Boolean)">
+        <argument>false</argument>
+      </attribute>
+      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:System.Web.WebPages.WebPageExecutingBase.Href(System.String,System.Object[])">
+    <parameter name="path">
+      <attribute ctor="M:JetBrains.Annotations.LocalizationRequiredAttribute.#ctor(System.Boolean)">
+        <argument>false</argument>
+      </attribute>
+      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:System.Web.WebPages.WebPageExecutingBase.NormalizePath(System.String)">
+    <parameter name="path">
+      <attribute ctor="M:JetBrains.Annotations.LocalizationRequiredAttribute.#ctor(System.Boolean)">
+        <argument>false</argument>
+      </attribute>
+      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:System.Web.WebPages.WebPageRenderingBase.RenderPage(System.String,System.Object[])">
+    <parameter name="path">
+      <attribute ctor="M:JetBrains.Annotations.LocalizationRequiredAttribute.#ctor(System.Boolean)">
+        <argument>false</argument>
+      </attribute>
+      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
+    </parameter>
+  </member>
+</assembly>

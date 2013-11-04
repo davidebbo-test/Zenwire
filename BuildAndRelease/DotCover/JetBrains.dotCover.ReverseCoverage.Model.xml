@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.dotCover.ReverseCoverage.Model</name>
+    </assembly>
+    <members>
+        <member name="M:JetBrains.dotCover.ReverseCoverage.Dal.ReverseFunctionCoverageBlockSizeAndMasksSectionMerger.ReadMasksBlock(JetBrains.Profiler.Snapshot.Storage.SnapshotStorageSection,System.Int32[],System.Int32)">
+            <summary>
+            Read masks block
+            </summary>
+            <param name="storageSection">source masks storage section</param>
+            <param name="blockSizes">relevant block sizes</param>
+            <param name="blockIndex">required block index</param>
+            <returns>masks block</returns>
+        </member>
+    </members>
+</doc>

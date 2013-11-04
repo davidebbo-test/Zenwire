@@ -1,0 +1,161 @@
+﻿@{
+    ViewBag.Title = "Schedule";
+    Layout = "~/Views/Shared/_SubLayout.cshtml";
+}
+
+@model ScheduleModel
+<div class="container">
+    <div class="form-horizontal">
+        <h2>Schedule</h2>
+
+        @using (Ajax.BeginForm("Schedule", "Appointment",
+            new AjaxOptions()
+            {
+                HttpMethod = "POST",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "Customer",
+                Url = Url.Action("Schedule", "Appointment")
+            }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+
+            <div class="control-group col-lg-12">
+                <p>Don’t just watch TV – experience it. Have a profession do an in-home consultation, give you installation recommendations and help you chose the right products to optimize your space.</p>
+                <label class="control-label"></label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.CustomerSearch, new { @type = "search", @placeholder = "Email Address" })
+                    <input type="submit" value="Continue" />
+                    @Html.ValidationMessageFor(m => m.CustomerSearch)
+                </div>
+            </div>
+        }
+        <div id="Customer">
+            @if (Model != null)
+            {
+                using (Ajax.BeginForm("CreateAppointment", "Appointment",
+                    new AjaxOptions()
+                    {
+                        HttpMethod = "POST",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "Customer",
+                        Url = Url.Action("CreateAppointment", "Appointment")
+                    }))
+                {
+
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+
+                    if (Model.Appointment != null && Model.Appointment.Customer.Id == 0)
+                    {
+
+                <br />
+                <br />
+                <fieldset>
+                    <legend>Customer</legend>
+                    @Html.HiddenFor(m => m.CustomerSearch)
+                    <p>
+                        <b>Hello There!</b> You must be new to Zenwire, please take a moment and provide us with the following details.<br />
+                        You will only ever need to do this once and your privacy is the most important thing to us, we don't like spam anymore than you do.
+                    </p>
+                    <!-- full-name input-->
+                    <div class="control-group col-lg-6">
+                        <label class="control-label">First Name</label>
+                        <div class="controls ">
+                            @Html.EditorFor(model => model.Appointment.Customer.FirstName, new { @class = "input-xlarge col-md-12" })
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <div class="control-group col-lg-6">
+                        <label class="control-label">Last Name</label>
+                        <div class="controls">
+                            @Html.EditorFor(model => model.Appointment.Customer.LastName, new { @class = "input-xlarge" })
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <!-- address-line1 input-->
+                    <div class="control-group col-lg-6">
+                        <label class="control-label">Address Line 1</label>
+                        <div class="controls">
+                            @Html.EditorFor(model => model.Appointment.Customer.Address, new { @class = "input-xlarge" })
+                        </div>
+                    </div>
+                    <!-- city input-->
+                    <div class="control-group col-lg-6">
+                        <label class="control-label">City / Town</label>
+                        <div class="controls">
+                            @Html.EditorFor(model => model.Appointment.Customer.City, new { @class = "input-xlarge" })
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <!-- phone input-->
+                    <div class="control-group col-lg-6">
+                        <label class="control-label">Phone</label>
+                        <div class="controls">
+                            @Html.EditorFor(model => model.Appointment.Customer.Phone, new { @class = "input-xlarge" })
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <!-- email input-->
+                    <div class="control-group col-lg-6">
+                        <label class="control-label">Email</label>
+                        <div class="controls">
+                            @Html.EditorFor(model => model.Appointment.Customer.Email, new { @class = "input-xlarge", @Value = Model.CustomerSearch })
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <!-- region input-->
+                    <div class="control-group col-lg-6">
+                        <label class="control-label">Province</label>
+                        <div class="controls">
+                            @Html.EditorFor(model => model.Appointment.Customer.Province, new { @class = "input-xlarge" })
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <!-- postal-code input-->
+                    <div class="control-group col-lg-6">
+                        <label class="control-label">Postal Code</label>
+                        <div class="controls">
+                            @Html.EditorFor(model => model.Appointment.Customer.Province, new { @class = "input-xlarge" })
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+
+                </fieldset>
+                    }
+
+                    if (Model.Appointment != null)
+                    {
+                
+                @Html.HiddenFor(m => m.Appointment.CustomerId)
+                        if (Model.Appointment.Customer != null)
+                        {
+                @Html.HiddenFor(m => m.Appointment.Customer.Id)
+                @Html.HiddenFor(m => m.Appointment.Customer.Email)
+                        }
+                @Html.HiddenFor(m => m.CustomerSearch)
+
+                <!-- schedule input-->
+                <div class="control-group col-lg-6">
+                    <label class="control-label">Schedule</label>
+                    <div class="controls ">
+                        @Html.TextBox("Appointment.ScheduledStart", DateTime.Now.ToString("MM/dd/yyyy"), new { @class = "datetimepicker" })
+                        @Html.ValidationMessageFor(model => model.Appointment.ScheduledStart)
+                        <select id="AppointmentTime" name="AppointmentTime"></select>
+                        @Html.ValidationMessageFor(model => model.AppointmentTime)
+                        <span id="progress">
+                            <img src="~/Images/Progress.gif" /></span>
+                    </div>
+                </div>
+                
+                <div class="control-group col-lg-12">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    @Html.ActionLink("Cancel", "Index", new { @class = "btn" })
+                </div>
+                    }
+
+                }
+            }
+        </div>
+    </div>
+</div>

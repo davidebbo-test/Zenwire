@@ -1,0 +1,25 @@
+﻿.form-horizontal {
+    background-color: #ffffff;
+}
+
+.control-group {
+    padding: 5px;
+}
+
+.services-list-horizontal li {
+    display: inline;
+}
+
+ul.services-list-horizontal {
+    list-style-type: none;
+    display: inline;
+}
+
+.services-list li {
+    list-style-type: none;
+    text-align: left;
+}
+
+div.partners img {
+    height: 50px;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JetBrains.dotCover.WorkspaceHost.Channel</name>
+    </assembly>
+    <members>
+        <member name="T:JetBrains.dotCover.WorkspaceHost.Channel.ErrorHandlingWrapperFactory">
+            <summary>
+            Handles communication errors and notifies workspace health tracker
+            </summary>
+        </member>
+    </members>
+</doc>

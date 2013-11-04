@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>c:\projects\zenwire\zenwire\services\productservice.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections.Generic;
+using System.Linq;
+using Zenwire.Domain;
+using Zenwire.Repositories;
+
+namespace Zenwire.Services
+{
+    public class ProductService : IProductService
+    {
+        private readonly IRepository&lt;Product&gt; _productRepository;
+
+        public ProductService(IRepository&lt;Product&gt; productRepository)
+        {
+            _productRepository = productRepository;
+        }
+
+        public Product Get(int id)
+        {
+            return _productRepository.Get.ToList().FirstOrDefault(x =&gt; x.Id == id);
+        }
+
+        public List&lt;Product&gt; Get()
+        {
+            return _productRepository.Get.ToList();
+        }
+
+        public Product Add(Product product)
+        {
+            _productRepository.Add(product);
+            return product.Id &gt; 0 ? product : null;
+        }
+
+        public void Update(Product product)
+        {
+            _productRepository.Update(product);
+        }
+
+        public void Remove(int id)
+        {
+            Product product = Get(id);
+            _productRepository.Remove(product);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,70,0],[13,9,13,10,0],[14,13,14,52,0],[15,9,15,10,0],[18,9,18,10,0],[19,13,19,72,0],[19,82,19,84,0],[20,9,20,10,0],[23,9,23,10,0],[24,13,24,52,0],[25,9,25,10,0],[28,9,28,10,0],[29,13,29,45,0],[30,13,30,52,0],[31,9,31,10,0],[34,9,34,10,0],[35,13,35,48,0],[36,9,36,10,0],[39,9,39,10,0],[40,13,40,39,0],[41,13,41,48,0],[42,9,42,10,0],[19,72,19,82,0]]);
+    </script>
+  </body>
+</html>

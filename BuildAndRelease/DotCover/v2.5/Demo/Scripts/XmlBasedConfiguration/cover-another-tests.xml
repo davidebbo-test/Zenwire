@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageParams>
+  <TargetExecutable>..\..\NUnit\nunit-console.exe</TargetExecutable>
+  <TargetArguments>SampleApp.Data.Tests.dll</TargetArguments>
+  <TargetWorkingDir>..\..\SampleApp\Bin</TargetWorkingDir>
+  <Output>..\..\Snapshots\SampleApp.Data.Tests.dcvr</Output>
+  
+  <Filters>
+    <IncludeFilters>
+      <FilterEntry>
+        <ModuleMask>*</ModuleMask>
+        <ClassMask>*</ClassMask>
+        <FunctionMask>*</FunctionMask>
+      </FilterEntry>
+    </IncludeFilters>
+    <ExcludeFilters>
+      <FilterEntry>
+        <ModuleMask>*Tests*</ModuleMask>
+        <ClassMask>*</ClassMask>
+        <FunctionMask>*</FunctionMask>
+      </FilterEntry>
+    </ExcludeFilters>
+  </Filters>
+</CoverageParams>
