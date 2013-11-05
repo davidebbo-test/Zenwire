@@ -96,7 +96,7 @@ IF !ERRORLEVEL! NEQ 0 goto error
 :: 4. Running tests
 echo :::::::::::: RUNNING CODE COVERAGE ::::::::::::
 %DOTCOVER_PATH% analyse /TargetExecutable=%NUNIT_PATH% /TargetArguments=%TESTS_PATH% /TargetWorkingDir=%DEPLOYMENT_SOURCE%\Tests.Unit.Zenwire\bin\Debug ^
- /Filters=+:module=*;class=*;function=*;-:module=*Tests* /ReportType=HTML /Output=%DEPLOYMENT_SOURCE%\Reports\Tests.Unit.Zenwire.html
+ /Filters=+:module=*;class=*;function=*;-:module=*Tests* /ReportType=HTML /Output=%DEPLOYMENT_SOURCE%\Reports\Tests.Unit.Zenwire.html /LogFile=%DEPLOYMENT_SOURCE%\Logs /CoreLogMask=Com;PdbBridge /CoreInstructionSet=x86
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 5. KuduSync
